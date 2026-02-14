@@ -45,7 +45,7 @@ nav ul li a:hover {
 
 /* HERO SECTION */
 #home {
-    height: 50vh;
+    height: 20vh;
     background: url("nlogo.png") center/contain no-repeat,
                 linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95));
     display: flex;
@@ -69,4 +69,100 @@ footer {
     text-align: center;
     padding: 40px;
     background: black;
+}
+/* AUTH BUTTONS (LOGIN / SIGNUP) */
+
+.auth-buttons{
+    display: flex;
+    gap: 12px;
+}
+
+.login-btn{
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid #6366f1;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.signup-btn{
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#6366f1,#8b5cf6);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-btn:hover{
+    background:#6366f1;
+}
+
+.signup-btn:hover{
+    opacity:0.85;
+}
+/* HERO MESSAGE SECTION */
+#herobox{
+    background: linear-gradient(180deg, #020617, #020617);
+    padding: 10px 150px;
+    display: flex;
+    justify-content: center;
+}
+
+/* MESSAGE CARD */
+.hero-message-box{
+    max-width: 900px;
+    width: 100%;
+    padding: 60px 40px;
+    text-align: center;
+
+    background: rgba(15, 23, 42, 0.75);
+    border-radius: 20px;
+
+    border: 1px solid rgba(99,102,241,0.6);
+    box-shadow: 0 0 25px rgba(99,102,241,0.35);
+}
+
+/* TITLE */
+.hero-message-box h1{
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+/* PARAGRAPH */
+.hero-message-box p{
+    font-size: 18px;
+    color: #cbd5f5;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* BUTTON */
+.join-btn{
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+
+    background: linear-gradient(90deg,#6366f1,#38bdf8);
+    color: white;
+    transition: 0.3s;
+}
+
+.join-btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #6366f1;
+}
+.xplorevo-link{
+    color:#8b5cf6;      /* electric purple */
+    text-decoration:none;
+    font-weight:600;
+}
+
+.xplorevo-link:hover{
+    color:#38bdf8;      /* neon blue on hover */
+    text-decoration:underline;
 }

@@ -1,17 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Join XSTN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .join-section {
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .join-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeUp 0.6s ease-in-out;
+        }
+
+        .join-card h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .join-card p {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 90px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .success-message {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            font-weight: bold;
+            color: #00ffae;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-</nav>
+<section class="join-section">
+    <div class="join-card">
+        <h1>Join XSTN</h1>
+        <p>Become part of our development crew and grow with us.</p>
 
-<h1>Coming Soon</h1>
-<p>Content under development.</p>
+        <form id="joinForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Role Interested In</label>
+                <select>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
+                    <option>UI/UX Designer</option>
+                    <option>DevOps</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Why do you want to join?</label>
+                <textarea required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Apply Now</button>
+        </form>
+
+        <div class="success-message" id="successMsg">
+            🚀 Application submitted successfully!
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById("joinForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        this.style.display = "none";
+        document.getElementById("successMsg").style.display = "block";
+    });
+</script>
 
 </body>
 </html>

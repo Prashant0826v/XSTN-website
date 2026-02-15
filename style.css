@@ -126,17 +126,20 @@ nav ul li a:hover::after{
 =========================== */
 
 #herobox{
-  padding:30px 150px;
+  padding:0 150px;
+  min-height:100vh;
   display:flex;
   justify-content:center;
+  align-items:center;
 }
+
 
 /* MESSAGE CARD */
 
 .hero-message-box{
   max-width:900px;
   width:100%;
-  padding:70px 50px;
+  padding:10px 30px;
   text-align:center;
   background:rgba(15,23,42,0.75);
   border-radius:22px;
@@ -473,5 +476,321 @@ select option {
   .back-home{
     font-size: 14px;
   }
+  .hero-message-box{
+  padding:35px 20px;
+}
 
+.hero-message-box h1{
+  font-size:28px;
+}
+
+.hero-message-box p{
+  font-size:14px;
+}
+
+
+}
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.outline-btn{
+  padding:14px 38px;
+  border-radius:30px;
+  border:1px solid #38bdf8;
+  color:#38bdf8;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.outline-btn:hover{
+  background:#38bdf8;
+  color:black;
+}
+/* ==========================
+   ABOUT SNAPSHOT SECTION
+========================== */
+
+.about-snapshot{
+  padding:50px 50px;
+  text-align:center;
+}
+
+.about-snapshot h2{
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+.about-text{
+  max-width:850px;
+  margin:0 auto 60px;
+  color:#cbd5f5;
+  line-height:1.7;
+}
+
+.about-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.about-card{
+  background:rgba(255,255,255,0.05);
+  padding:35px;
+  border-radius:18px;
+  border:1px solid rgba(139,92,246,0.4);
+  transition:0.3s;
+}
+
+.about-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px rgba(139,92,246,0.5);
+}
+
+.about-card h3{
+  margin-bottom:10px;
+}
+/* ==========================
+   WHAT WE BUILD
+========================== */
+
+.services-preview{
+  padding:120px 150px;
+  text-align:center;
+}
+
+.services-text{
+  max-width:850px;
+  margin:0 auto 60px;
+  color:#cbd5f5;
+  line-height:1.7;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+}
+
+
+.service-card{
+  background:rgba(255,255,255,0.05);
+  padding:35px;
+  border-radius:18px;
+  border:1px solid rgba(139,92,246,0.4);
+  transition:0.3s;
+}
+
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px rgba(139,92,246,0.5);
+}
+
+.service-card h3{
+  margin-bottom:10px;
+}
+@media (max-width:768px){
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* ===========================
+   WHY TRUST XSTN
+=========================== */
+
+#trust{
+  padding:20px 150px;
+  text-align:center;
+}
+
+.section-subtext{
+  color:#cbd5f5;
+  max-width:650px;
+  margin:10px auto 60px;
+  font-size:17px;
+}
+
+/* GRID */
+
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+/* CARD */
+
+.trust-card{
+  background:rgba(15,23,42,0.7);
+  border-radius:18px;
+  padding:35px 30px;
+  border:1px solid rgba(139,92,246,0.4);
+  box-shadow:0 0 25px rgba(139,92,246,0.25);
+  transition:0.3s;
+}
+
+.trust-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 35px rgba(139,92,246,0.45);
+}
+
+.trust-card h3{
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+.trust-card p{
+  color:#cbd5f5;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+  #trust{
+    padding:80px 20px;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* ===========================
+   FEATURED PROJECTS
+=========================== */
+
+#projects{
+  padding:120px 150px;
+  text-align:center;
+}
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+/* PROJECT CARD */
+
+.project-card{
+  background:rgba(15,23,42,0.75);
+  border-radius:18px;
+  padding:35px 30px;
+  border:1px solid rgba(56,189,248,0.4);
+  box-shadow:0 0 25px rgba(56,189,248,0.25);
+  transition:0.3s;
+  text-align:left;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 35px rgba(56,189,248,0.45);
+}
+
+.project-card h3{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.project-card p{
+  color:#cbd5f5;
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+.project-card span{
+  display:block;
+  font-size:13px;
+  color:#8b5cf6;
+  margin-bottom:15px;
+}
+
+.project-card a{
+  color:#38bdf8;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.project-card a:hover{
+  text-decoration:underline;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+  #projects{
+    padding:80px 20px;
+  }
+
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ===========================
+   HOW WE ARE DIFFERENT
+=========================== */
+
+#difference{
+  padding:120px 150px;
+  text-align:center;
+}
+
+.compare-table{
+  max-width:900px;
+  margin:50px auto;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(139,92,246,0.4);
+  box-shadow:0 0 25px rgba(139,92,246,0.25);
+}
+
+.compare-header,
+.compare-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.compare-header{
+  background:rgba(139,92,246,0.25);
+  font-weight:700;
+}
+
+.compare-header span,
+.compare-row span{
+  padding:18px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.compare-row{
+  background:rgba(15,23,42,0.7);
+}
+
+.compare-row:nth-child(even){
+  background:rgba(20,30,60,0.7);
+}
+
+.compare-row span:last-child{
+  color:#38bdf8;
+  font-weight:600;
+}
+
+.difference-note{
+  max-width:700px;
+  margin:30px auto 0;
+  color:#cbd5f5;
+  font-size:16px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+  #difference{
+    padding:80px 20px;
+  }
 }

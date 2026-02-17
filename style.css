@@ -991,3 +991,135 @@ select option {
   background:#38bdf8;
   color:black;
 }
+/* ===========================
+   FINAL CTA SECTION
+=========================== */
+
+.final-cta{
+  padding:120px 40px;
+  text-align:center;
+  background:linear-gradient(180deg,#020617,#030a25);
+}
+
+.final-cta h2{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.final-cta p{
+  font-size:18px;
+  color:#cbd5f5;
+  max-width:700px;
+  margin:0 auto 40px;
+  line-height:1.6;
+}
+
+.cta-btn{
+  display:inline-block;
+  padding:16px 44px;
+  border-radius:35px;
+  background:linear-gradient(90deg,#8b5cf6,#38bdf8);
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.cta-btn:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 25px rgba(139,92,246,0.8);
+}
+/* ============================
+   ABOUT SECTION
+============================ */
+
+.about-section{
+  padding:120px 150px;
+  text-align:center;
+}
+
+.section-title{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.section-subtitle{
+  max-width:800px;
+  margin:0 auto 70px;
+  color:#cbd5f5;
+  font-size:18px;
+}
+
+/* GRID */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+/* CARD */
+
+.about-card{
+  background:rgba(15,23,42,0.75);
+  border-radius:20px;
+  padding:70px 35px 45px;
+  border:1px solid rgba(139,92,246,0.6);
+  box-shadow:0 0 30px rgba(139,92,246,0.35);
+  position:relative;
+  transition:0.3s;
+}
+
+.about-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 45px rgba(139,92,246,0.7);
+}
+
+/* ICON */
+
+.about-icon{
+  position:absolute;
+  top:-30px;
+  left:50%;
+  transform:translateX(-50%);
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#0f172a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  box-shadow:0 0 20px rgba(99,102,241,0.9);
+  border:1px solid rgba(139,92,246,0.6);
+}
+
+/* TEXT */
+
+.about-card h3{
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.about-card p{
+  color:#cbd5f5;
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* ============================
+   MOBILE RESPONSIVE
+============================ */
+
+@media (max-width:768px){
+
+  .about-section{
+    padding:80px 20px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+}

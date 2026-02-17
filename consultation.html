@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>About - XSTN</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Request Consultation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<!-- NAVBAR -->
-    <nav>
+<body>
+<nav>
 
         <!-- LEFT : LOGIN / SIGNUP -->
         <div class="auth-buttons">
@@ -34,47 +33,61 @@
 
     <!-- HERO -->
     <section id="home"></section>
+<section class="consult-section">
+  <div class="container">
 
-<!-- ABOUT SECTION -->
-<section id="about" class="about-section">
+    <h2>Request a Consultation</h2>
+    <p>
+      Tell us about your project or idea. Our team will review your request and schedule a consultation.
+    </p>
 
-  <h2 class="section-title">Who We Are</h2>
+    <form class="consult-form">
 
-  <p class="section-subtitle">
-    XSTN is a performance-driven technology execution network structured to deliver
-    scalable digital products across industries.
-  </p>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" required>
+      </div>
 
-  <div class="about-grid">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required>
+      </div>
 
-    <!-- Vision -->
-    <div class="about-card">
-      <div class="about-icon">🚀</div>
-      <h3>Our Vision</h3>
-      <p>To build a next-generation tech execution ecosystem.</p>
-    </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Enter phone number">
+      </div>
 
-    <!-- Mission -->
-    <div class="about-card">
-      <div class="about-icon">🎯</div>
-      <h3>Our Mission</h3>
-      <p>Deliver structured, scalable, and high-impact digital systems.</p>
-    </div>
+      <div class="form-group">
+        <label>Consultation Type</label>
+        <select required>
+          <option value="">Select type</option>
+          <option>Website Consultation</option>
+          <option>App Development Consultation</option>
+          <option>UI/UX Consultation</option>
+          <option>Business Idea Discussion</option>
+        </select>
+      </div>
 
-    <!-- Founder Message -->
-    <div class="about-card">
-      <div class="about-icon">🧠</div>
-      <h3>Founder Message</h3>
-      <p>
-        We focus on execution discipline, innovation, and real-world impact.
-      </p>
-    </div>
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date">
+      </div>
+
+      <div class="form-group">
+        <label>Describe Your Requirement</label>
+        <textarea rows="5" placeholder="Briefly explain your idea or problem..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Submit Request
+      </button>
+
+    </form>
 
   </div>
-
 </section>
-
-<footer class="site-footer">
+ <footer class="site-footer">
 
   <div class="footer-grid">
 

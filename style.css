@@ -76,39 +76,7 @@ nav ul li a:hover::after{
   width:100%;
 }
 
-/* ===========================
-   AUTH BUTTONS
-=========================== */
 
-.auth-buttons{
-  display:flex;
-  gap:12px;
-}
-
-.login-btn{
-  padding:8px 18px;
-  border-radius:20px;
-  background:transparent;
-  border:1px solid #6366f1;
-  color:white;
-  text-decoration:none;
-}
-
-.signup-btn{
-  padding:8px 18px;
-  border-radius:20px;
-  background:linear-gradient(90deg,#6366f1,#8b5cf6);
-  color:white;
-  text-decoration:none;
-}
-
-.login-btn:hover{
-  background:#6366f1;
-}
-
-.signup-btn:hover{
-  opacity:0.85;
-}
 
 /* ===========================
    HERO BACKGROUND

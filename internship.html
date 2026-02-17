@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apply for Internship - XSTN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="join-section">
+
+  <div class="join-card">
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <h1>Apply for Internship</h1>
+    <p>Apply for internship opportunities at XSTN and work on real projects.</p>
+
+    <form id="internshipForm">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>College / University</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Degree / Course</label>
+        <input type="text" placeholder="B.Tech CSE, BCA, etc." required>
+      </div>
+
+      <div class="form-group">
+        <label>Year of Study</label>
+        <select required>
+          <option value="">Select Year</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>Final Year</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Internship Domain</label>
+        <select required>
+          <option value="">Select Domain</option>
+          <option>Frontend Development</option>
+          <option>Backend Development</option>
+          <option>Full Stack Development</option>
+          <option>UI/UX Design</option>
+          <option>Data Science</option>
+          <option>Cyber Security</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Technical Skills</label>
+        <textarea placeholder="Example: HTML, CSS, JavaScript, Python" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Portfolio / GitHub Link</label>
+        <input type="url" placeholder="https://github.com/username">
+      </div>
+
+      <div class="form-group">
+        <label>Why should we select you?</label>
+        <textarea required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+
+    </form>
+
+    <div class="success-message" id="internSuccess">
+      ✅ Internship application submitted successfully!
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+document.getElementById("internshipForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  this.style.display="none";
+  document.getElementById("internSuccess").style.display="block";
+});
+</script>
+
+</body>
+</html>

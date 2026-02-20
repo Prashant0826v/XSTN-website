@@ -525,7 +525,9 @@ select option {
 /* ==========================
    WHAT WE BUILD
 ========================== */
-
+ .section-title , .section-subtitle{
+  text-align: center;
+}
 .services-preview{
   padding:120px 150px;
   text-align:center;

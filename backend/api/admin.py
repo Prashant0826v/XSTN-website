@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import JoinMember
 
-# Register your models here.
+admin.site.register(JoinMember)

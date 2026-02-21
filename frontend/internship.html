@@ -44,67 +44,39 @@
 
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" required>
+        <input type="text" name="full_name" required>
       </div>
 
       <div class="form-group">
         <label>Email Address</label>
-        <input type="email" required>
+        <input type="email" name="email" required>
       </div>
 
       <div class="form-group">
         <label>Phone Number</label>
-        <input type="tel" required>
-      </div>
-
-      <div class="form-group">
-        <label>College / University</label>
-        <input type="text" required>
-      </div>
-
-      <div class="form-group">
-        <label>Degree / Course</label>
-        <input type="text" placeholder="B.Tech CSE, BCA, etc." required>
-      </div>
-
-      <div class="form-group">
-        <label>Year of Study</label>
-        <select required>
-          <option value="">Select Year</option>
-          <option>1st Year</option>
-          <option>2nd Year</option>
-          <option>3rd Year</option>
-          <option>Final Year</option>
-        </select>
+        <input type="tel" name="phone" required>
       </div>
 
       <div class="form-group">
         <label>Internship Domain</label>
-        <select required>
+        <select name="position" required>
           <option value="">Select Domain</option>
-          <option>Frontend Development</option>
-          <option>Backend Development</option>
-          <option>Full Stack Development</option>
-          <option>UI/UX Design</option>
-          <option>Data Science</option>
-          <option>Cyber Security</option>
-          <option>Other</option>
+          <option value="frontend">Frontend Development</option>
+          <option value="backend">Backend Development</option>
+          <option value="fullstack">Full Stack Development</option>
+          <option value="ui_ux">UI/UX Design</option>
+          <option value="data_science">Data Science</option>
         </select>
       </div>
 
       <div class="form-group">
         <label>Technical Skills</label>
-        <textarea placeholder="Example: HTML, CSS, JavaScript, Python" required></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Portfolio / GitHub Link</label>
-        <input type="url" placeholder="https://github.com/username">
+        <textarea name="experience" placeholder="Example: HTML, CSS, JavaScript, Python" required></textarea>
       </div>
 
       <div class="form-group">
         <label>Why should we select you?</label>
-        <textarea required></textarea>
+        <textarea name="cover_letter" required></textarea>
       </div>
 
       <button type="submit" class="submit-btn">Submit Application</button>
@@ -112,7 +84,8 @@
     </form>
 
     <div class="success-message" id="internSuccess">
-      ✅ Internship application submitted successfully!
+      <p>✅ Your internship application has been submitted successfully!</p>
+      <button class="ok-btn" onclick="location.reload()">OK</button>
     </div>
 
   </div>
@@ -122,8 +95,40 @@
 <script>
 document.getElementById("internshipForm").addEventListener("submit", function(e){
   e.preventDefault();
-  this.style.display="none";
-  document.getElementById("internSuccess").style.display="block";
+  
+  const formData = {
+    full_name: this.querySelector('input[name="full_name"]').value,
+    email: this.querySelector('input[name="email"]').value,
+    phone: this.querySelector('input[name="phone"]').value,
+    position: this.querySelector('select[name="position"]').value,
+    experience: this.querySelector('textarea[name="experience"]').value,
+    cover_letter: this.querySelector('textarea[name="cover_letter"]').value,
+    resume: null
+  };
+  
+  fetch("http://127.0.0.1:8000/api/api/internship/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.id) {
+      // Show success message and hide form
+      this.style.display = "none";
+      const successMsg = document.getElementById("internSuccess");
+      successMsg.style.display = "block";
+      successMsg.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      alert("Error: " + JSON.stringify(data));
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("Error submitting form: " + error);
+  });
 });
 </script>
 

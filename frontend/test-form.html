@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Form Submission</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; background: #1a1a2e; color: white; }
+        form { background: #16213e; padding: 30px; border-radius: 8px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0 20px 0; border: none; border-radius: 4px; }
+        button { background: #0f3460; color: white; padding: 12px 30px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        button:hover { background: #16213e; }
+        .success { color: #4CAF50; font-weight: bold; margin-top: 20px; }
+        .error { color: #f44336; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Test Form Submission</h1>
+    <form id="testForm">
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="role" placeholder="Role" required>
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit">Submit Test Form</button>
+    </form>
+    
+    <div id="message"></div>
+
+    <script>
+        document.getElementById("testForm").addEventListener("submit", function(e){
+            e.preventDefault();
+            const form = this;
+            const messageDiv = document.getElementById("message");
+            messageDiv.innerHTML = '<div class="error">Submitting...</div>';
+            
+            const data = {
+                full_name: form.querySelector('input[name="full_name"]').value,
+                email: form.querySelector('input[name="email"]').value,
+                role: form.querySelector('input[name="role"]').value,
+                message: form.querySelector('textarea[name="message"]').value
+            };
+            
+            console.log("1. Form data prepared:", data);
+            
+            fetch("http://127.0.0.1:8000/api/api/join/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                console.log("2. Got response, status:", response.status);
+                if(!response.ok) {
+                    throw new Error("HTTP " + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("3. Got JSON data:", data);
+                if(data.id) {
+                    messageDiv.innerHTML = '<div class="success">Success! Data saved with ID: ' + data.id + '</div>';
+                    console.log("4. Success message shown");
+                    form.reset();
+                } else {
+                    messageDiv.innerHTML = '<div class="error">Response had no ID: ' + JSON.stringify(data) + '</div>';
+                }
+            })
+            .catch(error => {
+                console.error("5. Caught error:", error);
+                messageDiv.innerHTML = '<div class="error">Error: ' + error.message + '</div>';
+            });
+        });
+    </script>
+</body>
+</html>

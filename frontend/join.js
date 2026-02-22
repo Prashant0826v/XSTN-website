@@ -1,11 +1,12 @@
 document.getElementById("joinForm").addEventListener("submit", function(e){
   e.preventDefault();
   
+  const form = this;
   const formData = {
-    full_name: this.querySelector('input[name="full_name"]').value,
-    email: this.querySelector('input[name="email"]').value,
-    role: this.querySelector('select[name="role"]').value,
-    message: this.querySelector('textarea[name="message"]').value
+    full_name: form.querySelector('input[name="full_name"]').value,
+    email: form.querySelector('input[name="email"]').value,
+    role: form.querySelector('select[name="role"]').value,
+    message: form.querySelector('textarea[name="message"]').value
   };
   
   fetch("http://127.0.0.1:8000/api/api/join/", {
@@ -15,11 +16,17 @@ document.getElementById("joinForm").addEventListener("submit", function(e){
     },
     body: JSON.stringify(formData)
   })
-  .then(response => response.json())
+  .then(response => {
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     if(data.id) {
       // Show success message and hide form
-      this.style.display = "none";
+      form.style.display = "none";
+      form.reset();
       const successMsg = document.getElementById("successMsg");
       successMsg.style.display = "block";
       successMsg.scrollIntoView({ behavior: 'smooth' });

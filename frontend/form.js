@@ -1,11 +1,12 @@
 document.getElementById("contactForm").addEventListener("submit", function(e){
   e.preventDefault();
   
+  const form = this;
   const formData = {
-    full_name: this.querySelector('input[name="full_name"]').value,
-    email: this.querySelector('input[name="email"]').value,
-    subject: this.querySelector('input[name="subject"]').value,
-    message: this.querySelector('textarea[name="message"]').value,
+    full_name: form.querySelector('input[name="full_name"]').value,
+    email: form.querySelector('input[name="email"]').value,
+    subject: form.querySelector('input[name="subject"]').value,
+    message: form.querySelector('textarea[name="message"]').value,
     phone: ""
   };
   
@@ -16,11 +17,17 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     },
     body: JSON.stringify(formData)
   })
-  .then(response => response.json())
+  .then(response => {
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     if(data.id) {
       // Show success message and hide form
-      this.style.display = "none";
+      form.style.display = "none";
+      form.reset();
       const successMsg = document.getElementById("contactSuccess");
       successMsg.style.display = "block";
       successMsg.scrollIntoView({ behavior: 'smooth' });

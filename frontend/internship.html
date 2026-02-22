@@ -96,13 +96,14 @@
 document.getElementById("internshipForm").addEventListener("submit", function(e){
   e.preventDefault();
   
+  const form = this;
   const formData = {
-    full_name: this.querySelector('input[name="full_name"]').value,
-    email: this.querySelector('input[name="email"]').value,
-    phone: this.querySelector('input[name="phone"]').value,
-    position: this.querySelector('select[name="position"]').value,
-    experience: this.querySelector('textarea[name="experience"]').value,
-    cover_letter: this.querySelector('textarea[name="cover_letter"]').value,
+    full_name: form.querySelector('input[name="full_name"]').value,
+    email: form.querySelector('input[name="email"]').value,
+    phone: form.querySelector('input[name="phone"]').value,
+    position: form.querySelector('select[name="position"]').value,
+    experience: form.querySelector('textarea[name="experience"]').value,
+    cover_letter: form.querySelector('textarea[name="cover_letter"]').value,
     resume: null
   };
   
@@ -113,11 +114,17 @@ document.getElementById("internshipForm").addEventListener("submit", function(e)
     },
     body: JSON.stringify(formData)
   })
-  .then(response => response.json())
+  .then(response => {
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     if(data.id) {
       // Show success message and hide form
-      this.style.display = "none";
+      form.style.display = "none";
+      form.reset();
       const successMsg = document.getElementById("internSuccess");
       successMsg.style.display = "block";
       successMsg.scrollIntoView({ behavior: 'smooth' });

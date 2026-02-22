@@ -1,0 +1,17 @@
+Thank you for joining XSTN Community!
+
+Dear {{ full_name }},
+
+Thank you for your interest in joining the XSTN community. We appreciate your support and look forward to connecting with you soon.
+
+Your submission details:
+- Name: {{ full_name }}
+- Email: {{ email }}
+- Role: {{ role }}
+- Message: {{ message }}
+
+We will review your application and get back to you shortly.
+
+Best regards,
+XSTN Team
+www.xstn.com

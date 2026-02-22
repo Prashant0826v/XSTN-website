@@ -1,0 +1,15 @@
+XSTN Admin - New Submission Alert
+
+Type: {{ submission_type }}
+
+New {{ submission_type }} submission received!
+
+Submission Details:
+{{ details }}
+
+Time: {{ timestamp }}
+
+---
+Please log in to admin panel to review: http://127.0.0.1:8000/admin/
+
+This is an automated notification.

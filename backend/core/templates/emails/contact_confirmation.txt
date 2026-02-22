@@ -1,0 +1,17 @@
+We received your message!
+
+Dear {{ full_name }},
+
+Thank you for contacting XSTN. We have received your message and appreciate you reaching out to us.
+
+Your submission details:
+- Name: {{ full_name }}
+- Email: {{ email }}
+- Subject: {{ subject }}
+- Message: {{ message }}
+
+Our team will review your inquiry and respond within 24 hours.
+
+Best regards,
+XSTN Team - Customer Support
+www.xstn.com

@@ -1,0 +1,18 @@
+Thank you for applying to XSTN Internship Program!
+
+Dear {{ full_name }},
+
+Thank you for your interest in the XSTN Internship Program. We have received your application and appreciate your enthusiasm.
+
+Your submission details:
+- Name: {{ full_name }}
+- Email: {{ email }}
+- Phone: {{ phone }}
+- Position Applied: {{ position }}
+- Experience: {{ experience }}
+
+We will carefully review your application and contact you within 48 hours with updates.
+
+Best regards,
+XSTN Team - Internship Program
+www.xstn.com

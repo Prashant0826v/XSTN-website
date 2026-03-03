@@ -25,8 +25,8 @@ cp .env.example .env
 uvicorn main:app --reload
 ```
 
-**Backend Running at**: `http://localhost:8000`
-**API Docs**: `http://localhost:8000/docs`
+**Backend Running at**: `https://xstn-website-1.onrender.com`
+**API Docs**: `https://xstn-website-1.onrender.com/docs`
 
 ### 2. Frontend Setup
 
@@ -250,7 +250,7 @@ FRONTEND_URL = "https://xstn.tech"
 - **backend/README.md** - Backend documentation
 - **Browser Console** - Debug messages logged
 - **Backend Logs** - Request/response details
-- **API Docs** - http://localhost:8000/docs
+- **API Docs** - https://xstn-website-1.onrender.com/docs
 
 ## Performance
 

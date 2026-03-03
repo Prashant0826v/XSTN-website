@@ -125,7 +125,7 @@ Each form must have:
 
 ## API Endpoints
 
-All endpoints are prefixed with the backend base URL (default: `http://127.0.0.1:8000`).
+All endpoints are prefixed with the backend base URL (default: `https://xstn-website-1.onrender.com`).
 
 ### POST /api/forms/contact
 **Purpose**: Submit contact form messages
@@ -204,18 +204,18 @@ All endpoints are prefixed with the backend base URL (default: `http://127.0.0.1
 ### Development (Local)
 ```javascript
 // Automatic detection when running on localhost
-API_BASE_URL = "http://127.0.0.1:8000"
+API_BASE_URL = "https://xstn-website-1.onrender.com"
 ```
 
 ### Production (Live Server)
 Add to `runtime-config.js` before other scripts load:
 ```javascript
-window.API_BASE_URL = "https://your-backend-domain.com";
+window.API_BASE_URL = "https://xstn-website-1.onrender.com";
 ```
 
 Or add meta tag to HTML head:
 ```html
-<meta name="api-base-url" content="https://your-backend-domain.com">
+<meta name="api-base-url" content="https://xstn-website-1.onrender.com">
 ```
 
 ## Error Handling
@@ -322,7 +322,7 @@ Edit form element structure:
 
 ### Forms Not Submitting
 1. Check browser console (F12) for errors
-2. Verify backend is running: `http://localhost:8000/health`
+2. Verify backend is running: `https://xstn-website-1.onrender.com/health`
 3. Check CORS settings in backend
 4. Verify form `id` or `class` matches JavaScript handler
 

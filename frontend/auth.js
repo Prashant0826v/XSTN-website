@@ -3,7 +3,7 @@
  * Handles signup, login, OTP verification, JWT token management, and auth state.
  */
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://xstn-website-1.onrender.com/';
 
 // ==================== TOKEN MANAGEMENT ====================
 

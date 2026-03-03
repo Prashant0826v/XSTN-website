@@ -7,7 +7,7 @@ This guide explains how to connect your frontend forms to the XSTN Django backen
 
 ## API Base URL
 ```javascript
-const API_BASE_URL = 'http://localhost:8000/api/forms';
+const API_BASE_URL = 'https://xstn-website-1.onrender.com/api/forms';
 ```
 
 ---

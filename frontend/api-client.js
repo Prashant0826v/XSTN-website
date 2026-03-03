@@ -16,7 +16,7 @@
  */
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://xstn-website-1.onrender.com';
 
 // For production, update to:
 // const API_BASE_URL = 'https://api.xstn.com';
@@ -27,7 +27,7 @@ const API_BASE_URL = 'http://localhost:8000';
  */
 function getAPIBaseUrl() {
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        return 'http://localhost:8000';
+        return 'https://xstn-website-1.onrender.com';
     }
     // Replace with your production API URL
     return 'https://api.xstn.com';
@@ -43,7 +43,7 @@ async function submitForm(endpoint, data) {
     try {
         const url = `${getAPIBaseUrl()}/${endpoint}`;
         console.log(`Submitting to: ${url}`, data);
-        
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {

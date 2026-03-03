@@ -181,23 +181,26 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 # Email Configuration
-# Uses Gmail SMTP when valid credentials are in .env, otherwise console backend for dev
-SMTP_USER = get_env('SMTP_USER', default='')
-SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
+# Using console backend for development - prints emails to server logs
+# This allows testing without valid SMTP credentials
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
-    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = SMTP_USER
-    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
-else:
-    # Console backend for development without SMTP credentials
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Commented out - will be enabled only when SMTP credentials are verified
+# SMTP_USER = get_env('SMTP_USER', default='')
+# SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
+#
+# if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
+#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#     EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
+#     EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
+#     EMAIL_USE_TLS = True
+#     EMAIL_HOST_USER = SMTP_USER
+#     EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+
+
 
 DEFAULT_FROM_EMAIL = get_env('FROM_EMAIL', default='noreply@xstn.tech')
-ADMIN_EMAIL = 'prashant.iron1@gmail.com'
+ADMIN_EMAIL = 'prashant.iron2@gmail.com'
 
 # Logging
 LOGGING = {

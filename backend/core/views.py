@@ -1,15 +1,23 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import JoinCommunity, InternshipApplication, ContactMessage
+
+User = get_user_model()
+from .models import (
+    JoinCommunity, InternshipApplication, ContactMessage, ProposalForm,
+    DeveloperApplication, ConsultationRequest, NewsletterSubscription, Testimonial
+)
 from .serializers import (
     JoinCommunitySerializer, InternshipApplicationSerializer, ContactMessageSerializer,
+    ProposalFormSerializer, DeveloperApplicationSerializer, ConsultationRequestSerializer,
+    NewsletterSubscriptionSerializer, TestimonialSerializer,
     UserSerializer, UserRegistrationSerializer, UserLoginSerializer
 )
 
@@ -29,6 +37,7 @@ class ContactMessageViewSet(viewsets.ModelViewSet):
     serializer_class = ContactMessageSerializer
 
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def join_community_api(request):
@@ -59,7 +68,7 @@ Best regards,
 XSTN Team
 www.xstn.com
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
             
             # Send admin notification
             admin_subject = f"New Join Community Submission - {instance.full_name}"
@@ -72,7 +81,7 @@ Message: {instance.message}
 
 Please log in to admin panel to review: http://127.0.0.1:8000/admin/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -80,6 +89,7 @@ Please log in to admin panel to review: http://127.0.0.1:8000/admin/
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def internship_application_api(request):
@@ -111,7 +121,7 @@ Best regards,
 XSTN Team - Internship Program
 www.xstn.com
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
             
             # Send admin notification
             admin_subject = f"New Internship Application - {instance.full_name}"
@@ -125,7 +135,7 @@ Experience: {instance.experience}
 
 Please log in to admin panel to review: http://127.0.0.1:8000/admin/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -133,6 +143,7 @@ Please log in to admin panel to review: http://127.0.0.1:8000/admin/
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def contact_message_api(request):
@@ -163,7 +174,7 @@ Best regards,
 XSTN Team - Customer Support
 www.xstn.com
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
             
             # Send admin notification
             admin_subject = f"New Contact Message - {instance.subject}"
@@ -176,13 +187,283 @@ Message: {instance.message}
 
 Please log in to admin panel to review: http://127.0.0.1:8000/admin/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def proposal_form_api(request):
+    """API endpoint for submitting proposal form"""
+    serializer = ProposalFormSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        
+        # Send confirmation email to user
+        try:
+            user_email = instance.email
+            subject = "Project Proposal Received - XSTN"
+            message = f"""Thank you for your project proposal!
+
+Dear {instance.name},
+
+Thank you for submitting your project proposal to XSTN. We have received your inquiry and appreciate the opportunity to work with you.
+
+Project Details:
+- Company: {instance.company or 'Not specified'}
+- Project Type: {instance.project_type}
+- Budget Range: {instance.budget_range or 'Not specified'}
+- Timeline: {instance.timeline or 'Not specified'}
+- Message: {instance.message}
+
+Our team will review your proposal and contact you within 24-48 hours with a customized solution.
+
+Best regards,
+XSTN Team - Business Development
+www.xstn.tech
+"""
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            
+            # Send admin notification
+            admin_subject = f"New Project Proposal - {instance.project_type} from {instance.name}"
+            admin_message = f"""New Project Proposal received!
+
+Name: {instance.name}
+Email: {instance.email}
+Company: {instance.company or 'Not specified'}
+Project Type: {instance.project_type}
+Budget Range: {instance.budget_range or 'Not specified'}
+Timeline: {instance.timeline or 'Not specified'}
+Message: {instance.message}
+
+Please log in to admin panel to review: http://localhost:8000/admin/core/proposalform/
+"""
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+        except Exception as e:
+            print(f"Error sending email: {str(e)}")
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def developer_application_api(request):
+    """API endpoint for submitting developer application"""
+    serializer = DeveloperApplicationSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        
+        # Send confirmation email to user
+        try:
+            user_email = instance.email
+            subject = "Developer Application Received - XSTN"
+            message = f"""Thank you for your developer application!
+
+Dear {instance.full_name},
+
+Thank you for your interest in joining XSTN as a developer. We have received your application and appreciate your enthusiasm.
+
+Application Details:
+- Name: {instance.full_name}
+- Email: {instance.email}
+- Phone: {instance.phone}
+- Role Interested: {instance.role_interested}
+- Experience Level: {instance.experience_level.title()}
+- Skills: {instance.skills}
+- Message: {instance.message}
+
+We will review your application carefully and contact you within 3-5 business days with updates.
+
+Best regards,
+XSTN Team - Recruitment
+www.xstn.tech
+"""
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            
+            # Send admin notification
+            admin_subject = f"New Developer Application - {instance.role_interested} from {instance.full_name}"
+            admin_message = f"""New Developer Application received!
+
+Name: {instance.full_name}
+Email: {instance.email}
+Phone: {instance.phone}
+Role Interested: {instance.role_interested}
+Experience Level: {instance.experience_level.title()}
+Skills: {instance.skills}
+Portfolio URL: {instance.portfolio_url or 'Not provided'}
+GitHub URL: {instance.github_url or 'Not provided'}
+Message: {instance.message}
+Status: {instance.status.title()}
+
+Please log in to admin panel to review: http://localhost:8000/admin/core/developerapplication/
+"""
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+        except Exception as e:
+            print(f"Error sending email: {str(e)}")
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def consultation_request_api(request):
+    """API endpoint for submitting consultation request"""
+    serializer = ConsultationRequestSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        
+        # Send confirmation email to user
+        try:
+            user_email = instance.email
+            subject = "Consultation Request Received - XSTN"
+            message = f"""Thank you for requesting a consultation!
+
+Dear {instance.full_name},
+
+Thank you for your interest in XSTN consultation services. We have received your request and will be in touch shortly.
+
+Consultation Details:
+- Consultation Type: {instance.get_consultation_type_display()}
+- Preferred Date: {instance.preferred_date or 'Not specified'}
+- Requirement: {instance.requirement}
+
+Our team will reach out to you within 24 hours to schedule your consultation session.
+
+Best regards,
+XSTN Team - Consultation Services
+www.xstn.tech
+"""
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            
+            # Send admin notification
+            admin_subject = f"New Consultation Request - {instance.get_consultation_type_display()} from {instance.full_name}"
+            admin_message = f"""New Consultation Request received!
+
+Name: {instance.full_name}
+Email: {instance.email}
+Phone: {instance.phone or 'Not provided'}
+Consultation Type: {instance.get_consultation_type_display()}
+Preferred Date: {instance.preferred_date or 'Not specified'}
+Requirement: {instance.requirement}
+Status: {instance.status.title()}
+
+Please log in to admin panel to review: http://localhost:8000/admin/core/consultationrequest/
+"""
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+        except Exception as e:
+            print(f"Error sending email: {str(e)}")
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def newsletter_subscription_api(request):
+    """API endpoint for newsletter subscription"""
+    serializer = NewsletterSubscriptionSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        
+        # Send confirmation email to user
+        try:
+            user_email = instance.email
+            subject = "Welcome to XSTN Newsletter!"
+            message = f"""You've been subscribed to XSTN Newsletter!
+
+Dear Subscriber,
+
+Thank you for subscribing to the XSTN Newsletter. You will now receive updates about:
+- Latest projects and case studies
+- Industry insights and trends
+- Company news and announcements
+- Exclusive offers and opportunities
+
+We're excited to share our journey with you!
+
+Best regards,
+XSTN Team
+www.xstn.tech
+"""
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            
+            # Send admin notification
+            admin_subject = f"New Newsletter Subscription - {instance.email}"
+            admin_message = f"""New Newsletter Subscription!
+
+Email: {instance.email}
+Status: Active
+Subscription Date: {instance.created_at}
+
+This subscriber has been added to the mailing list.
+"""
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+        except Exception as e:
+            print(f"Error sending email: {str(e)}")
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def testimonial_api(request):
+    """API endpoint for submitting testimonials"""
+    serializer = TestimonialSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        
+        # Send confirmation email to user
+        try:
+            user_email = instance.email
+            subject = "Thank you for your testimonial!"
+            message = f"""Thank you for your testimonial!
+
+Dear {instance.name},
+
+Thank you for sharing your experience with XSTN. Your feedback is invaluable to us and helps us improve our services.
+
+Your Testimonial:
+Rating: {instance.rating}⭐
+Message: {instance.message}
+
+We appreciate your support and look forward to working with you in the future!
+
+Best regards,
+XSTN Team
+www.xstn.tech
+"""
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            
+            # Send admin notification
+            admin_subject = f"New Testimonial from {instance.name}"
+            admin_message = f"""New Testimonial received!
+
+Name: {instance.name}
+Company: {instance.company or 'Not specified'}
+Email: {instance.email}
+Rating: {instance.rating}⭐
+Message: {instance.message}
+Status: Awaiting Approval
+
+Please log in to admin panel to approve: http://localhost:8000/admin/core/testimonial/
+"""
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+        except Exception as e:
+            print(f"Error sending email: {str(e)}")
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Authentication Endpoints
 @api_view(['POST'])

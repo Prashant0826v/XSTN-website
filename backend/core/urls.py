@@ -10,10 +10,15 @@ router.register(r'contact', views.ContactMessageViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # Alternative simple endpoints for form submissions
+    # Form submission endpoints with email notifications
     path('api/join/', views.join_community_api, name='join-api'),
     path('api/internship/', views.internship_application_api, name='internship-api'),
     path('api/contact/', views.contact_message_api, name='contact-api'),
+    path('api/proposal/', views.proposal_form_api, name='proposal-api'),
+    path('api/developer-application/', views.developer_application_api, name='developer-api'),
+    path('api/consultation/', views.consultation_request_api, name='consultation-api'),
+    path('api/newsletter/', views.newsletter_subscription_api, name='newsletter-api'),
+    path('api/testimonial/', views.testimonial_api, name='testimonial-api'),
     # Authentication endpoints
     path('auth/register/', views.register_user, name='register'),
     path('auth/login/', views.login_user, name='login'),

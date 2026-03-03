@@ -1,0 +1,137 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
+test_submit_consultation_all_types (tests.test_all.ConsultationRequestAPITest.test_submit_consultation_all_types) ... INFO 2026-03-02 21:02:06,820 email_notifications Verification email sent to u0@t.com
+INFO 2026-03-02 21:02:06,831 email_notifications Verification email sent to u1@t.com
+INFO 2026-03-02 21:02:06,834 email_notifications Verification email sent to u2@t.com
+INFO 2026-03-02 21:02:06,839 email_notifications Verification email sent to u3@t.com
+INFO 2026-03-02 21:02:06,843 email_notifications Verification email sent to u4@t.com
+ok
+test_submit_consultation_request (tests.test_all.ConsultationRequestAPITest.test_submit_consultation_request) ... INFO 2026-03-02 21:02:06,849 email_notifications Verification email sent to business@corp.com
+ok
+test_consultation_types (tests.test_all.ConsultationRequestModelTest.test_consultation_types) ... ok
+test_create_consultation (tests.test_all.ConsultationRequestModelTest.test_create_consultation) ... ok
+test_submit_contact_form (tests.test_all.ContactFormAPITest.test_submit_contact_form) ... INFO 2026-03-02 21:02:06,857 email_notifications Verification email sent to apitest@example.com
+ok
+test_submit_contact_form_missing_required (tests.test_all.ContactFormAPITest.test_submit_contact_form_missing_required) ... WARNING 2026-03-02 21:02:06,861 log Bad Request: /api/forms/contact-forms/
+ok
+test_contact_form_str (tests.test_all.ContactFormModelTest.test_contact_form_str) ... ok
+test_contact_form_verification_token (tests.test_all.ContactFormModelTest.test_contact_form_verification_token) ... ok
+test_contact_form_verify_email (tests.test_all.ContactFormModelTest.test_contact_form_verify_email) ... ok
+test_create_contact_form (tests.test_all.ContactFormModelTest.test_create_contact_form) ... ok
+test_phone_optional (tests.test_all.ContactFormModelTest.test_phone_optional) ... ok
+test_submit_consultation (tests.test_all.CoreConsultationAPITest.test_submit_consultation) ... ok
+test_submit_contact (tests.test_all.CoreContactAPITest.test_submit_contact) ... ok
+test_submit_developer (tests.test_all.CoreDeveloperAPITest.test_submit_developer) ... ok
+test_submit_internship (tests.test_all.CoreInternshipAPITest.test_submit_internship) ... ok
+test_submit_join_community (tests.test_all.CoreJoinCommunityAPITest.test_submit_join_community) ... ok
+test_submit_missing_fields (tests.test_all.CoreJoinCommunityAPITest.test_submit_missing_fields) ... WARNING 2026-03-02 21:02:06,896 log Bad Request: /api/join/
+ok
+test_subscribe (tests.test_all.CoreNewsletterAPITest.test_subscribe) ... ok
+test_submit_proposal (tests.test_all.CoreProposalAPITest.test_submit_proposal) ... ok
+test_submit_testimonial (tests.test_all.CoreTestimonialAPITest.test_submit_testimonial) ... ok
+test_submit_developer_application (tests.test_all.DeveloperApplicationAPITest.test_submit_developer_application) ... INFO 2026-03-02 21:02:06,951 email_notifications Verification email sent to devjohn@example.com
+ok
+test_submit_developer_minimal (tests.test_all.DeveloperApplicationAPITest.test_submit_developer_minimal) ... INFO 2026-03-02 21:02:06,956 email_notifications Verification email sent to dev@t.com
+ok
+test_create_developer_application (tests.test_all.DeveloperApplicationModelTest.test_create_developer_application) ... ok
+test_experience_levels (tests.test_all.DeveloperApplicationModelTest.test_experience_levels) ... ok
+test_api_root (tests.test_all.HealthCheckTest.test_api_root) ... ok
+test_forms_api_contact_endpoint (tests.test_all.HealthCheckTest.test_forms_api_contact_endpoint)
+Verify the forms API endpoints are reachable ... ok
+test_health_check (tests.test_all.HealthCheckTest.test_health_check) ... ok
+test_submit_inquiry_form (tests.test_all.InquiryFormAPITest.test_submit_inquiry_form) ... INFO 2026-03-02 21:02:06,982 email_notifications Verification email sent to inquiry@example.com
+ok
+test_submit_inquiry_minimal (tests.test_all.InquiryFormAPITest.test_submit_inquiry_minimal) ... INFO 2026-03-02 21:02:06,989 email_notifications Verification email sent to min@test.com
+ok
+test_create_inquiry (tests.test_all.InquiryFormModelTest.test_create_inquiry) ... ok
+test_optional_fields (tests.test_all.InquiryFormModelTest.test_optional_fields) ... ok
+test_submit_internship_application (tests.test_all.InternshipApplicationAPITest.test_submit_internship_application) ... INFO 2026-03-02 21:02:06,998 email_notifications Verification email sent to intern@university.edu
+ok
+test_submit_internship_missing_fields (tests.test_all.InternshipApplicationAPITest.test_submit_internship_missing_fields) ... WARNING 2026-03-02 21:02:07,003 log Bad Request: /api/forms/internship-applications/
+ok
+test_create_application (tests.test_all.InternshipApplicationModelTest.test_create_application) ... ok
+test_status_update (tests.test_all.InternshipApplicationModelTest.test_status_update) ... ok
+test_verification_flow (tests.test_all.InternshipApplicationModelTest.test_verification_flow) ... ok
+test_submit_join_application (tests.test_all.JoinApplicationAPITest.test_submit_join_application) ... INFO 2026-03-02 21:02:07,014 email_notifications Verification email sent to joinuser@example.com
+ok
+test_submit_join_missing_fields (tests.test_all.JoinApplicationAPITest.test_submit_join_missing_fields) ... WARNING 2026-03-02 21:02:07,018 log Bad Request: /api/forms/join-applications/
+ok
+test_create_join_application (tests.test_all.JoinApplicationModelTest.test_create_join_application) ... ok
+test_duplicate_subscription (tests.test_all.NewsletterSubscriptionAPITest.test_duplicate_subscription) ... INFO 2026-03-02 21:02:07,023 email_notifications Confirmation email sent to dup@example.com
+WARNING 2026-03-02 21:02:07,025 log Bad Request: /api/forms/newsletter-subscriptions/
+ok
+test_subscribe_newsletter (tests.test_all.NewsletterSubscriptionAPITest.test_subscribe_newsletter) ... INFO 2026-03-02 21:02:07,028 email_notifications Confirmation email sent to subscriber@example.com
+ok
+test_create_subscription (tests.test_all.NewsletterSubscriptionModelTest.test_create_subscription) ... ok
+test_unique_email (tests.test_all.NewsletterSubscriptionModelTest.test_unique_email) ... ok
+test_unsubscribe (tests.test_all.NewsletterSubscriptionModelTest.test_unsubscribe) ... ok
+test_submit_testimonial (tests.test_all.TestimonialAPITest.test_submit_testimonial) ... INFO 2026-03-02 21:02:07,038 email_notifications Verification email sent to happy@corp.com
+ok
+test_submit_testimonial_all_ratings (tests.test_all.TestimonialAPITest.test_submit_testimonial_all_ratings) ... INFO 2026-03-02 21:02:07,042 email_notifications Verification email sent to c1@t.com
+INFO 2026-03-02 21:02:07,046 email_notifications Verification email sent to c2@t.com
+INFO 2026-03-02 21:02:07,051 email_notifications Verification email sent to c3@t.com
+INFO 2026-03-02 21:02:07,055 email_notifications Verification email sent to c4@t.com
+INFO 2026-03-02 21:02:07,059 email_notifications Verification email sent to c5@t.com
+ok
+test_create_testimonial (tests.test_all.TestimonialModelTest.test_create_testimonial) ... ok
+test_rating_range (tests.test_all.TestimonialModelTest.test_rating_range) ... ok
+test_account_locking (tests.test_all.UserModelTest.test_account_locking) ... ok
+test_create_user (tests.test_all.UserModelTest.test_create_user) ... ok
+test_email_verification (tests.test_all.UserModelTest.test_email_verification) ... ok
+test_reset_failed_attempts (tests.test_all.UserModelTest.test_reset_failed_attempts) ... ok
+test_verification_code_generation (tests.test_all.UserModelTest.test_verification_code_generation) ... ok
+test_register_duplicate_email (tests.test_all.UserRegistrationAPITest.test_register_duplicate_email) ... WARNING 2026-03-02 21:02:10,669 log Bad Request: /api/users/register/
+ok
+test_register_password_mismatch (tests.test_all.UserRegistrationAPITest.test_register_password_mismatch) ... WARNING 2026-03-02 21:02:10,672 log Bad Request: /api/users/register/
+ok
+test_register_user (tests.test_all.UserRegistrationAPITest.test_register_user) ... ok
+
+----------------------------------------------------------------------
+Ran 56 tests in 4.474s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
+
+---STDOUT---
+Found 56 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: corsheaders, django_filters, messages, rest_framework, staticfiles
+  Apply all migrations: admin, auth, contenttypes, core, forms, sessions, users
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying users.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying core.0001_initial... OK
+  Applying core.0002_internshipapplication... OK
+  Applying core.0003_contactmessage... OK
+  Applying core.0004_delete_contactmessage_delete_internshipapplication... OK
+  Applying core.0005_contactmessage_internshipapplication... OK
+  Applying core.0006_delete_contactmessage_delete_internshipapplication... OK
+  Applying core.0007_contactmessage... OK
+  Applying core.0008_internshipapplication_contactmessage_phone_and_more... OK
+  Applying core.0009_alter_internshipapplication_resume... OK
+  Applying core.0010_consultationrequest_developerapplication_and_more... OK
+  Applying forms.0001_initial... OK
+  Applying forms.0002_developerapplication... OK
+  Applying forms.0003_consultationrequest_joinapplication_and_more... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).

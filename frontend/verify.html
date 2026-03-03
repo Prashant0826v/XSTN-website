@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Email - XTN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Inline OTP styles to prevent any override */
+        .otp-container {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            gap: 10px;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 350px;
+        }
+
+        .otp-box {
+            width: 48px !important;
+            height: 54px !important;
+            min-width: 48px !important;
+            max-width: 48px !important;
+            text-align: center !important;
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            border: 2px solid rgba(139, 92, 246, 0.5) !important;
+            border-radius: 10px !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #fff !important;
+            outline: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            transition: all 0.3s ease;
+            caret-color: #8b5cf6;
+            flex: 0 0 48px !important;
+        }
+
+        .otp-box:focus {
+            border-color: #8b5cf6 !important;
+            box-shadow: 0 0 18px rgba(139, 92, 246, 0.5) !important;
+            transform: translateY(-2px);
+        }
+
+        .verify-email-address {
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 15px;
+            word-break: break-all;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="auth-section">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Verify Your Email</h1>
+                <p>We've sent a 6-digit verification code to</p>
+                <p class="verify-email-address" id="verifyEmailDisplay">loading...</p>
+            </div>
+
+            <div class="otp-container" id="otpContainer">
+                <input type="text" maxlength="1" class="otp-box" autocomplete="off" inputmode="numeric">
+                <input type="text" maxlength="1" class="otp-box" autocomplete="off" inputmode="numeric">
+                <input type="text" maxlength="1" class="otp-box" autocomplete="off" inputmode="numeric">
+                <input type="text" maxlength="1" class="otp-box" autocomplete="off" inputmode="numeric">
+                <input type="text" maxlength="1" class="otp-box" autocomplete="off" inputmode="numeric">
+                <input type="text" maxlength="1" class="otp-box" autocomplete="off" inputmode="numeric">
+            </div>
+
+            <button type="button" class="submit-btn" id="verifyBtn">VERIFY EMAIL</button>
+
+            <div class="auth-links">
+                <p>Didn't receive the code? <a href="#" id="resendBtn">Resend Code</a></p>
+                <p id="resendTimer" style="display:none;color:#94a3b8;font-size:13px;"></p>
+                <p><a href="signup.html">&#8592; Back to Signup</a></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="popup.js"></script>
+    <script>
+        (function () {
+            const API_BASE = 'http://localhost:8000';
+
+            // Get email from URL params or localStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            let userEmail = urlParams.get('email') || '';
+            if (!userEmail) {
+                userEmail = localStorage.getItem('xstn_verify_email') || '';
+            }
+
+            console.log('Verify page loaded. Email:', userEmail);
+
+            // Display email
+            const emailDisplay = document.getElementById('verifyEmailDisplay');
+            if (userEmail) {
+                emailDisplay.textContent = userEmail;
+            } else {
+                emailDisplay.textContent = 'No email found';
+                emailDisplay.style.color = '#f87171';
+            }
+
+            // OTP input behavior
+            const otpBoxes = document.querySelectorAll('.otp-box');
+
+            otpBoxes.forEach((box, idx) => {
+                // Only allow digits
+                box.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                    if (e.target.value && idx < 5) {
+                        otpBoxes[idx + 1].focus();
+                    }
+                });
+
+                // Backspace moves to previous box
+                box.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !e.target.value && idx > 0) {
+                        otpBoxes[idx - 1].focus();
+                    }
+                });
+
+                // Paste handler — paste 6 digits across all boxes
+                box.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\s/g, '');
+                    if (/^\d{6}$/.test(pasted)) {
+                        otpBoxes.forEach((b, i) => { b.value = pasted[i]; });
+                        otpBoxes[5].focus();
+                    }
+                });
+            });
+
+            // Auto-focus first box
+            if (otpBoxes[0]) otpBoxes[0].focus();
+
+            // Get OTP code from all boxes
+            function getOtpCode() {
+                return Array.from(otpBoxes).map(b => b.value).join('');
+            }
+
+            // VERIFY button
+            document.getElementById('verifyBtn').addEventListener('click', async function () {
+                const code = getOtpCode();
+
+                if (!userEmail) {
+                    showPopup('error', 'Error', 'Email address not found. Please go back to signup.', null);
+                    return;
+                }
+
+                if (code.length !== 6) {
+                    showPopup('error', 'Error', 'Please enter the complete 6-digit code.', null);
+                    return;
+                }
+
+                this.disabled = true;
+                this.textContent = 'Verifying...';
+
+                try {
+                    const response = await fetch(`${API_BASE}/api/users/verify_email/`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: userEmail, code: code })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        localStorage.removeItem('xstn_verify_email');
+                        showPopup('success', 'Verified!', 'Email verified successfully! You can now log in.', null);
+                        setTimeout(() => { window.location.href = 'login.html'; }, 2000);
+                    } else {
+                        showPopup('error', 'Verification Failed', data.detail || 'Invalid or expired code. Please try again.', null);
+                        otpBoxes.forEach(b => { b.value = ''; });
+                        otpBoxes[0].focus();
+                    }
+                } catch (err) {
+                    console.error('Verify error:', err);
+                    showPopup('error', 'Network Error', 'Could not connect to server.', null);
+                } finally {
+                    this.disabled = false;
+                    this.textContent = 'VERIFY EMAIL';
+                }
+            });
+
+            // RESEND button
+            let cooldown = 0;
+            document.getElementById('resendBtn').addEventListener('click', async function (e) {
+                e.preventDefault();
+                if (cooldown > 0) return;
+
+                if (!userEmail) {
+                    showPopup('error', 'Error', 'Email address not found. Please go back to signup.', null);
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE}/api/users/resend_verification/`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: userEmail })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        showPopup('success', 'Code Sent!', 'A new verification code has been sent to your email.', null);
+                        cooldown = 60;
+                        const timerEl = document.getElementById('resendTimer');
+                        this.style.display = 'none';
+                        timerEl.style.display = 'inline';
+                        const interval = setInterval(() => {
+                            cooldown--;
+                            timerEl.textContent = `Resend available in ${cooldown}s`;
+                            if (cooldown <= 0) {
+                                clearInterval(interval);
+                                timerEl.style.display = 'none';
+                                document.getElementById('resendBtn').style.display = 'inline';
+                            }
+                        }, 1000);
+                    } else {
+                        showPopup('error', 'Error', data.detail || data.email?.[0] || 'Could not resend code.', null);
+                    }
+                } catch (err) {
+                    console.error('Resend error:', err);
+                    showPopup('error', 'Network Error', 'Could not connect to server.', null);
+                }
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
+

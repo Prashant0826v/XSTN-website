@@ -1,144 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Join as Developer</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Background Video -->
+  <!-- Background Video -->
 
   <nav>
+    <!-- LEFT AUTH BUTTONS -->
+    <div class="nav-auth">
+      <a href="login.html" class="login-btn">Log In</a>
+      <a href="signup.html" class="signup-btn">Sign Up</a>
+    </div>
+
+    <!-- CENTER LOGO -->
+    <img src="media/nlogo.png" class="logo">
+
+    <!-- RIGHT MENU -->
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="join.html">Join XTN</a></li>
+      <li><a href="partner.html">Partners</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+  </nav>
 
 
-        <!-- CENTER LOGO -->
-        <img src="nlogo.png" class="logo">
+  <!-- HERO -->
+  <section id="home"></section>
 
-        <!-- RIGHT MENU -->
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="join.html">Join XSTN</a></li>
-            <li><a href="partner.html">Partners</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
 
-    </nav>
 
- 
-    <!-- HERO -->
-    <section id="home"></section>
-   
-   
+  <section class="proposal-section">
 
-<section class="proposal-section">
-    
-  <div class="container">
-    <h2>Join as Developer</h2>
-    <p>
-      Apply to join our development team. Share your skills and experience below.
+    <div class="container">
+      <h2>Join as Developer</h2>
+      <p>
+        Apply to join our development team. Share your skills and experience below.
+      </p>
+
+      <form class="proposal-form">
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Enter phone number">
+        </div>
+
+        <div class="form-group">
+          <label>Role Applying For</label>
+          <select required>
+            <option value="">Select role</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+            <option>Full Stack Developer</option>
+            <option>Mobile App Developer</option>
+            <option>UI/UX Designer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Skills</label>
+          <input type="text" placeholder="HTML, CSS, JS, React, Node, etc" required>
+        </div>
+
+        <div class="form-group">
+          <label>Experience Level</label>
+          <select required>
+            <option value="">Select level</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Portfolio / GitHub Link</label>
+          <input type="url" placeholder="https://github.com/username">
+        </div>
+
+        <div class="form-group">
+          <label>Why Should We Select You?</label>
+          <textarea rows="5" placeholder="Tell us about yourself..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Apply Now</button>
+
+      </form>
+    </div>
+  </section>
+  <script src="popup.js"></script>
+  <script src="developer-application.js"></script>
+
+  <footer class="site-footer">
+
+    <div class="footer-grid">
+
+      <!-- BRAND -->
+      <div>
+        <h3>XTN</h3>
+        <p>
+          Performance-driven technology execution network building scalable
+          digital products.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="join.html">Internship Program</a>
+
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h4>Contact</h4>
+        <p>Email: contact@xtn.com</p>
+        <p>Powered by <a href="https://xplorevo.com" target="_blank" class="xplorevo-link">Xplorevo Pvt Ltd</a></p>
+      </div>
+
+    </div>
+
+    <p class="copyright">
+      © 2025 XTN. All rights reserved.
     </p>
 
-    <form class="proposal-form">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your name" required>
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="Enter your email" required>
-      </div>
-
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="Enter phone number">
-      </div>
-
-      <div class="form-group">
-        <label>Role Applying For</label>
-        <select required>
-          <option value="">Select role</option>
-          <option>Frontend Developer</option>
-          <option>Backend Developer</option>
-          <option>Full Stack Developer</option>
-          <option>Mobile App Developer</option>
-          <option>UI/UX Designer</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Skills</label>
-        <input type="text" placeholder="HTML, CSS, JS, React, Node, etc" required>
-      </div>
-
-      <div class="form-group">
-        <label>Experience Level</label>
-        <select required>
-          <option value="">Select level</option>
-          <option>Beginner</option>
-          <option>Intermediate</option>
-          <option>Advanced</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Portfolio / GitHub Link</label>
-        <input type="url" placeholder="https://github.com/username">
-      </div>
-
-      <div class="form-group">
-        <label>Why Should We Select You?</label>
-        <textarea rows="5" placeholder="Tell us about yourself..." required></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">Apply Now</button>
-
-    </form>
-  </div>
-</section>
-<script src="js/form.js"></script>
-
- <footer class="site-footer">
-
-  <div class="footer-grid">
-
-    <!-- BRAND -->
-    <div>
-      <h3>XSTN</h3>
-      <p>
-        Performance-driven technology execution network building scalable
-        digital products.
-      </p>
-    </div>
-
-    <!-- QUICK LINKS -->
-    <div>
-      <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="projects.html">Projects</a>
-      <a href="join.html">Internship Program</a>
-
-    </div>
-
-    <!-- CONTACT -->
-    <div>
-      <h4>Contact</h4>
-      <p>Email: contact@xstn.com</p>
-      <p>Powered by <a href="https://xplorevo.com" target="_blank" class="xplorevo-link">Xplorevo Pvt Ltd</a></p>
-    </div>
-
-  </div>
-
-  <p class="copyright">
-    © 2025 XSTN. All rights reserved.
-  </p>
-
-</footer>
+  </footer>
+  <script src="auth.js"></script>
 </body>
+
 </html>

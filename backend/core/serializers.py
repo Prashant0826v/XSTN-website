@@ -1,6 +1,11 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import JoinCommunity, InternshipApplication, ContactMessage
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+from .models import (
+    JoinCommunity, InternshipApplication, ContactMessage, ProposalForm,
+    DeveloperApplication, ConsultationRequest, NewsletterSubscription, Testimonial
+)
 
 
 class JoinCommunitySerializer(serializers.ModelSerializer):
@@ -22,6 +27,41 @@ class ContactMessageSerializer(serializers.ModelSerializer):
         model = ContactMessage
         fields = ['id', 'full_name', 'email', 'subject', 'message', 'phone', 'created_at']
         read_only_fields = ['id', 'created_at']
+
+
+class ProposalFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProposalForm
+        fields = ['id', 'name', 'email', 'company', 'project_type', 'budget_range', 'timeline', 'message', 'is_read', 'created_at']
+        read_only_fields = ['id', 'created_at', 'is_read']
+
+
+class DeveloperApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DeveloperApplication
+        fields = ['id', 'full_name', 'email', 'phone', 'role_interested', 'experience_level', 'skills', 'portfolio_url', 'github_url', 'message', 'status', 'is_read', 'created_at']
+        read_only_fields = ['id', 'created_at', 'is_read', 'status']
+
+
+class ConsultationRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConsultationRequest
+        fields = ['id', 'full_name', 'email', 'phone', 'consultation_type', 'preferred_date', 'requirement', 'status', 'is_read', 'created_at']
+        read_only_fields = ['id', 'created_at', 'is_read', 'status']
+
+
+class NewsletterSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsletterSubscription
+        fields = ['id', 'email', 'is_active', 'created_at']
+        read_only_fields = ['id', 'created_at']
+
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testimonial
+        fields = ['id', 'name', 'company', 'email', 'rating', 'message', 'is_approved', 'created_at']
+        read_only_fields = ['id', 'created_at', 'is_approved']
 
 
 # User Authentication Serializers

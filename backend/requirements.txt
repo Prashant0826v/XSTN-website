@@ -1,0 +1,12 @@
+Django>=5.0,<7.0
+djangorestframework>=3.15
+djangorestframework-simplejwt>=5.3
+django-cors-headers>=4.3
+django-filter>=25.0
+python-dotenv>=1.0
+PyJWT>=2.8
+sqlparse>=0.5
+
+# Production Server Dependencies
+gunicorn>=21.2.0
+psycopg2-binary>=2.9.9

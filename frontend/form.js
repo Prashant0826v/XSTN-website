@@ -1,7 +1,11 @@
-document.getElementById("contactForm").addEventListener("submit", function(e){
+document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  
+
   const form = this;
+  const submitBtn = form.querySelector('.submit-btn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
   const formData = {
     full_name: form.querySelector('input[name="full_name"]').value,
     email: form.querySelector('input[name="email"]').value,
@@ -9,34 +13,29 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     message: form.querySelector('textarea[name="message"]').value,
     phone: ""
   };
-  
-  fetch("http://127.0.0.1:8000/api/api/contact/", {
+
+  fetch("http://localhost:8000/api/contact/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(formData)
   })
-  .then(response => {
-    if(!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    if(data.id) {
-      // Show success message and hide form
-      form.style.display = "none";
-      form.reset();
-      const successMsg = document.getElementById("contactSuccess");
-      successMsg.style.display = "block";
-      successMsg.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      alert("Error: " + JSON.stringify(data));
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    alert("Error submitting form: " + error);
-  });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      showSuccessPopup("Your message has been sent successfully! We'll get back to you soon.", form);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      showErrorPopup("Something went wrong. Please try again later.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    });
 });

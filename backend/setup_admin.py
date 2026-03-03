@@ -6,17 +6,23 @@ django.setup()
 
 from apps.users.models import User
 
+# Credentials
 username = 'admin'
 email = 'prashant.iron2@gmail.com'
-password = 'admin@123'
+password = 'admin@123'  # Note: Use a more secure password in production
 
-# Delete existing admin if exists
-User.objects.filter(username=username).delete()
+# Check if superuser already exists
+if not User.objects.filter(username=username).exists():
+    User.objects.create_superuser(username=username, email=email, password=password)
+    print(f"✓ Superuser '{username}' created successfully!")
+else:
+    # Optional: Update the password if it already exists to ensure login works
+    user = User.objects.get(username=username)
+    user.set_password(password)
+    user.is_superuser = True
+    user.is_staff = True
+    user.save()
+    print(f"✓ Superuser '{username}' password updated successfully!")
 
-# Create superuser
-user = User.objects.create_superuser(username=username, email=email, password=password)
-print(f"✓ Superuser created successfully!")
 print(f"  Username: {username}")
-print(f"  Email: {email}")
 print(f"  Password: {password}")
-print(f"  Admin panel: http://localhost:8000/admin")

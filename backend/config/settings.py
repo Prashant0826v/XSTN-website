@@ -26,9 +26,9 @@ DEBUG = get_env_bool('DEBUG', default=True)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'xstn.tech',
-    '*.xstn.tech',
-    '*',  # Remove in production
+    'xstn-website-fvon.onrender.com',
+    '.onrender.com',
+    '*',
 ]
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,6 +125,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static'] if (BASE_DIR / 'static').exists() else []
+STORAGES = {
+    "default": {
+        "ENGINE": "django.db.backends.base.creation.BaseDatabaseCreation",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Media files
 MEDIA_URL = '/media/'

@@ -26,11 +26,16 @@ const API_BASE_URL = 'https://xstn-website-1.onrender.com';
  * @returns {string} API base URL
  */
 function getAPIBaseUrl() {
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        return 'https://xstn-website-1.onrender.com';
+    const hostname = window.location.hostname;
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        return 'http://127.0.0.1:8000';
     }
-    // Replace with your production API URL
-    return 'https://api.xstn.com';
+    // Automatically use the render backend URL if on render frontend
+    if (hostname.includes('onrender.com')) {
+        return 'https://xstn-backend.onrender.com';
+    }
+    // Default production URL
+    return 'https://xstn-backend.onrender.com';
 }
 
 /**

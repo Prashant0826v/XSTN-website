@@ -1,0 +1,176 @@
+﻿
+  frontend\style.css:16
+60:/* CARD */
+  frontend\style.css:16
+61:
+> frontend\style.css:16
+62:.testimonial-card {
+  frontend\style.css:16
+63:  background: 
+rgba(15, 23, 42, 0.4);
+  frontend\style.css:16
+64:  padding: 40px 
+30px;
+  frontend\style.css:16
+65:  border-radius: 
+16px;
+  frontend\style.css:16
+66:  border: 1px solid 
+rgba(255, 255, 255, 
+0.05);
+  frontend\style.css:16
+67:  transition: all 
+0.4s 
+cubic-bezier(0.175, 
+0.885, 0.32, 1.275);
+  frontend\style.css:16
+68:  backdrop-filter: 
+blur(12px);
+  frontend\style.css:16
+69:  position: 
+relative;
+  frontend\style.css:16
+70:  overflow: hidden;
+  frontend\style.css:16
+71:}
+  frontend\style.css:16
+72:
+> frontend\style.css:16
+73:.testimonial-card::b
+efore {
+  frontend\style.css:16
+74:  content: '';
+  frontend\style.css:16
+75:  position: 
+absolute;
+  frontend\style.css:16
+76:  top: 0;
+  frontend\style.css:16
+77:  left: 0;
+  frontend\style.css:16
+78:  width: 100%;
+  frontend\style.css:16
+79:  height: 100%;
+  frontend\style.css:16
+80:  background: linear
+-gradient(180deg, 
+rgba(56, 189, 248, 
+0.08) 0%, transparent 
+100%);
+  frontend\style.css:16
+81:  opacity: 0;
+  frontend\style.css:16
+82:  transition: 
+opacity 0.3s ease;
+  frontend\style.css:16
+83:  pointer-events: 
+none;
+  frontend\style.css:16
+84:}
+  frontend\style.css:16
+85:
+> frontend\style.css:16
+86:.testimonial-card:ho
+ver {
+  frontend\style.css:16
+87:  transform: 
+translateY(-8px);
+  frontend\style.css:16
+88:  border-color: 
+rgba(56, 189, 248, 
+0.3);
+  frontend\style.css:16
+89:  box-shadow: 0 
+20px 40px rgba(0, 0, 
+0, 0.4), 0 0 20px 
+rgba(56, 189, 248, 
+0.1);
+  frontend\style.css:16
+90:}
+  frontend\style.css:16
+91:
+> frontend\style.css:16
+92:.testimonial-card:ho
+ver::before {
+  frontend\style.css:16
+93:  opacity: 1;
+  frontend\style.css:16
+94:}
+  frontend\style.css:16
+95:
+  frontend\style.css:16
+96:/* IMAGE */
+  frontend\style.css:16
+97:
+> frontend\style.css:16
+98:.testimonial-card 
+img {
+  frontend\style.css:16
+99:  width: 80px;
+  frontend\style.css:17
+00:  height: 80px;
+  frontend\style.css:17
+01:  object-fit: cover;
+  frontend\style.css:17
+02:  border-radius: 
+50%;
+  frontend\style.css:17
+03:  margin-bottom: 
+15px;
+  frontend\style.css:17
+04:  border: 2px solid 
+#38bdf8;
+  frontend\style.css:17
+05:}
+  frontend\style.css:17
+06:
+  frontend\style.css:17
+07:/* TEXT */
+  frontend\style.css:17
+08:
+> frontend\style.css:17
+09:.testimonial-card 
+h3 {
+  frontend\style.css:17
+10:  margin-bottom: 
+4px;
+  frontend\style.css:17
+11:}
+  frontend\style.css:17
+12:
+> frontend\style.css:17
+13:.testimonial-card 
+span {
+  frontend\style.css:17
+14:  font-size: 13px;
+  frontend\style.css:17
+15:  color: #38bdf8;
+  frontend\style.css:17
+16:}
+  frontend\style.css:17
+17:
+  frontend\style.css:17
+18:.company {
+  frontend\style.css:17
+19:  font-size: 14px;
+  frontend\style.css:17
+20:  opacity: 0.8;
+  frontend\style.css:17
+21:  margin-bottom: 
+12px;
+  frontend\style.css:17
+22:}
+  frontend\style.css:17
+23:
+  frontend\style.css:17
+24:.feedback {
+  frontend\style.css:17
+25:  font-size: 15px;
+  frontend\style.css:17
+26:  line-height: 1.6;
+  frontend\style.css:17
+27:  color: #e5e7eb;
+  frontend\style.css:17
+28:}
+
+

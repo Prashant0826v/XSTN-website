@@ -1,139 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Get a Proposal</title>
+  <meta name="description"
+    content="XSTN is a performance-driven technology execution network building scalable digital products, enterprise websites, and powerful web applications.">
+  <meta name="keywords"
+    content="technology, scalable web applications, tech network, developers, internship, AI systems, SaaS, UI/UX">
+  <meta name="author" content="Xplorevo Pvt Ltd">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<nav>
-        <!-- LEFT AUTH BUTTONS -->
-        <div class="nav-auth">
-            <a href="login.html" class="login-btn">Log In</a>
-            <a href="signup.html" class="signup-btn">Sign Up</a>
+  <nav>
+    <!-- LEFT AUTH BUTTONS -->
+    <div class="nav-auth">
+      <a href="login.html" class="login-btn">Log In</a>
+      <a href="signup.html" class="signup-btn">Sign Up</a>
+    </div>
+
+    <!-- CENTER LOGO -->
+    <img src="media/nlogo.png" class="logo">
+
+    <!-- HAMBURGER MENU -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- RIGHT MENU -->
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="join.html">Join XTN</a></li>
+      <li><a href="partner.html">Partners</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <script src="nav.js"></script>
+
+
+  <!-- HERO -->
+  <section id="home"></section>
+
+  <section class="proposal-section">
+    <div class="container">
+
+      <h2>Get a Proposal</h2>
+      <p>
+        Share your project details and we will send you a customized proposal.
+      </p>
+
+      <form class="proposal-form">
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" required>
         </div>
 
-        <!-- CENTER LOGO -->
-        <img src="media/nlogo.png" class="logo">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required>
+        </div>
 
-        <!-- RIGHT MENU -->
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="join.html">Join XSTN</a></li>
-            <li><a href="partner.html">Partners</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Enter phone number">
+        </div>
 
-    </nav>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select required>
+            <option value="">Select project type</option>
+            <option>Website Development</option>
+            <option>Mobile App Development</option>
+            <option>E-commerce Website</option>
+            <option>UI/UX Design</option>
+            <option>Other</option>
+          </select>
+        </div>
 
+        <div class="form-group">
+          <label>Estimated Budget</label>
+          <select>
+            <option value="">Select budget range</option>
+            <option>Below ₹10,000</option>
+            <option>₹10,000 - ₹30,000</option>
+            <option>₹30,000 - ₹70,000</option>
+            <option>Above ₹70,000</option>
+          </select>
+        </div>
 
-    <!-- HERO -->
-    <section id="home"></section>
+        <div class="form-group">
+          <label>Project Description</label>
+          <textarea rows="5" placeholder="Describe your project..." required></textarea>
+        </div>
 
-<section class="proposal-section">
-  <div class="container">
+        <button type="submit" class="submit-btn">
+          Request Proposal
+        </button>
 
-    <h2>Get a Proposal</h2>
-    <p>
-      Share your project details and we will send you a customized proposal.
+      </form>
+
+    </div>
+  </section>
+
+  <script src="proposal.js"></script>
+
+  <footer class="site-footer">
+
+    <div class="footer-grid">
+
+      <!-- BRAND -->
+      <div>
+        <h3>XSTN</h3>
+        <p>
+          Performance-driven technology execution network building scalable
+          digital products.
+        </p>
+      </div>
+
+      <div>
+        <a href="testimonials.html" class="client-say-btn"
+          style="display: inline-block; background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; margin-bottom: 15px; font-weight: bold; transition: transform 0.3s ease, box-shadow 0.3s ease;">What
+          Our Clients Say</a>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="team.html">Team</a>
+        <a href="join.html">Internship Program</a>
+
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h4>Contact</h4>
+        <p>Email: contact@xstn.com</p>
+        <p>Powered by <a href="https://xplorevo.com" target="_blank" class="xplorevo-link">Xplorevo Pvt Ltd</a></p>
+      </div>
+
+    </div>
+
+    <p class="copyright">
+      © 2025 XSTN. All rights reserved.
     </p>
 
-    <form class="proposal-form">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your name" required>
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="Enter your email" required>
-      </div>
-
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="Enter phone number">
-      </div>
-
-      <div class="form-group">
-        <label>Project Type</label>
-        <select required>
-          <option value="">Select project type</option>
-          <option>Website Development</option>
-          <option>Mobile App Development</option>
-          <option>E-commerce Website</option>
-          <option>UI/UX Design</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Estimated Budget</label>
-        <select>
-          <option value="">Select budget range</option>
-          <option>Below ₹10,000</option>
-          <option>₹10,000 - ₹30,000</option>
-          <option>₹30,000 - ₹70,000</option>
-          <option>Above ₹70,000</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Project Description</label>
-        <textarea rows="5" placeholder="Describe your project..." required></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">
-        Request Proposal
-      </button>
-
-    </form>
-
-  </div>
-</section>
-
-<script src="proposal.js"></script>
-
-    <footer class="site-footer">
-
-  <div class="footer-grid">
-
-    <!-- BRAND -->
-    <div>
-      <h3>XSTN</h3>
-      <p>
-        Performance-driven technology execution network building scalable
-        digital products.
-      </p>
-    </div>
-
-    <!-- QUICK LINKS -->
-    <div>
-      <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="projects.html">Projects</a>
-      <a href="join.html">Internship Program</a>
-
-    </div>
-
-    <!-- CONTACT -->
-    <div>
-      <h4>Contact</h4>
-      <p>Email: contact@xstn.com</p>
-      <p>Powered by <a href="https://xplorevo.com" target="_blank" class="xplorevo-link">Xplorevo Pvt Ltd</a></p>
-    </div>
-
-  </div>
-
-  <p class="copyright">
-    © 2025 XSTN. All rights reserved.
-  </p>
-
-</footer>
+  </footer>
 </body>
+
 </html>

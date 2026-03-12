@@ -1,0 +1,153 @@
+﻿
+  frontend\style.css:86
+7:.about-card:hover 
+.card-icon,
+  frontend\style.css:86
+8:.service-card:hover 
+.card-icon,
+> frontend\style.css:86
+9:.trust-card:hover 
+.card-icon,
+  frontend\style.css:87
+0:.project-card:hover 
+.card-icon {
+  frontend\style.css:87
+1:  transform: 
+scale(1.1) 
+rotate(5deg);
+  frontend\style.css:87
+6:.about-card:hover 
+.card-icon svg,
+  frontend\style.css:87
+7:.service-card:hover 
+.card-icon svg,
+> frontend\style.css:87
+8:.trust-card:hover 
+.card-icon svg,
+  frontend\style.css:87
+9:.project-card:hover 
+.card-icon svg {
+  frontend\style.css:88
+0:  stroke: #a78bfa;
+  
+frontend\style.css:976:
+  frontend\style.css:97
+7:/* ==================
+=========
+> frontend\style.css:97
+8:   WHY TRUST XSTN
+  frontend\style.css:97
+9:=====================
+====== */
+  
+frontend\style.css:980:
+> frontend\style.css:98
+1:#trust {
+  frontend\style.css:98
+2:  padding: 60px 5%;
+  frontend\style.css:98
+3:  text-align: center;
+  frontend\style.css:99
+3:/* GRID */
+  
+frontend\style.css:994:
+> frontend\style.css:99
+5:.trust-grid {
+  frontend\style.css:99
+6:  display: grid;
+  frontend\style.css:99
+7:  
+grid-template-columns: 
+repeat(auto-fit, 
+minmax(280px, 1fr));
+  frontend\style.css:10
+01:/* CARD */
+  frontend\style.css:10
+02:
+> frontend\style.css:10
+03:.trust-card {
+  frontend\style.css:10
+04:  background: 
+rgba(15, 23, 42, 0.4);
+  frontend\style.css:10
+05:  padding: 40px 
+35px;
+  frontend\style.css:10
+13:}
+  frontend\style.css:10
+14:
+> frontend\style.css:10
+15:.trust-card::before 
+{
+  frontend\style.css:10
+16:  content: '';
+  frontend\style.css:10
+17:  position: 
+absolute;
+  frontend\style.css:10
+26:}
+  frontend\style.css:10
+27:
+> frontend\style.css:10
+28:.trust-card:hover {
+  frontend\style.css:10
+29:  transform: 
+translateY(-8px);
+  frontend\style.css:10
+30:  border-color: 
+rgba(139, 92, 246, 
+0.3);
+  frontend\style.css:10
+32:}
+  frontend\style.css:10
+33:
+> frontend\style.css:10
+34:.trust-card:hover::b
+efore {
+  frontend\style.css:10
+35:  opacity: 1;
+  frontend\style.css:10
+36:}
+  frontend\style.css:10
+37:
+> frontend\style.css:10
+38:.trust-card h3 {
+  frontend\style.css:10
+39:  font-size: 20px;
+  frontend\style.css:10
+40:  margin-bottom: 
+12px;
+  frontend\style.css:10
+43:}
+  frontend\style.css:10
+44:
+> frontend\style.css:10
+45:.trust-card p {
+  frontend\style.css:10
+46:  color: #cbd5f5;
+  frontend\style.css:10
+47:  font-size: 15px;
+  frontend\style.css:10
+52:
+  frontend\style.css:10
+53:@media(max-width:768
+px) {
+> frontend\style.css:10
+54:  #trust {
+  frontend\style.css:10
+55:    padding: 80px 
+20px;
+  frontend\style.css:10
+56:  }
+  frontend\style.css:10
+57:
+> frontend\style.css:10
+58:  .trust-grid {
+  frontend\style.css:10
+59:    
+grid-template-columns: 
+1fr;
+  frontend\style.css:10
+60:  }
+
+

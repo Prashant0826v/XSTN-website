@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     role_interested: selects[0]?.value || '',
                     skills: inputs[1]?.value || '',  // Skills input
                     experience_level: selects[1]?.value?.toLowerCase() || 'beginner',
-                    portfolio_url: form.querySelector('input[type="url"]')?.value || '',
+                    portfolio_url: form.querySelector('input[name="portfolio_url"]')?.value || '',
+                    github_url: form.querySelector('input[name="github_url"]')?.value || '',
+                    resume_url: form.querySelector('input[name="resume_url"]')?.value || '',
                     message: form.querySelector('textarea').value
                 };
 

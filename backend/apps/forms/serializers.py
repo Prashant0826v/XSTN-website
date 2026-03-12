@@ -31,7 +31,7 @@ class InternshipApplicationSerializer(serializers.ModelSerializer):
 class DeveloperApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeveloperApplication
-        fields = ['id', 'full_name', 'email', 'phone', 'role_interested', 'experience_level', 'skills', 'portfolio_url', 'github_url', 'message', 'status', 'is_read', 'created_at']
+        fields = ['id', 'full_name', 'email', 'phone', 'role_interested', 'experience_level', 'skills', 'portfolio_url', 'github_url', 'resume_url', 'message', 'status', 'is_read', 'created_at']
         read_only_fields = ['id', 'created_at']
 
 class JoinApplicationSerializer(serializers.ModelSerializer):

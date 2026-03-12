@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-kq!2-cc0fq^vlxxr*m*6w-0q-zlvcdpsy_edgfp$iur#d^@pz7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,.railway.app').split(',')
 
 
 # Application definition
@@ -153,8 +153,8 @@ prod_frontend_url = os.getenv('FRONTEND_URL')
 if prod_frontend_url:
     CORS_ALLOWED_ORIGINS.append(prod_frontend_url)
 
-# CSRF Trusted Origins for Render
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000').split(',')
+# CSRF Trusted Origins for Railway/Production
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000,https://*.railway.app').split(',')
 
 # REST Framework Configuration
 REST_FRAMEWORK = {

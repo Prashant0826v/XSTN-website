@@ -15,8 +15,7 @@
  * }
  */
 
-// API Configuration
-const API_BASE_URL = 'https://xstn-website-1.onrender.com';
+const API_BASE_URL = 'https://xstn-website-fvon.onrender.com';
 
 // For production, update to:
 // const API_BASE_URL = 'https://api.xstn.com';
@@ -30,12 +29,9 @@ function getAPIBaseUrl() {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://127.0.0.1:8000';
     }
-    // Automatically use the render backend URL if on render frontend
-    if (hostname.includes('onrender.com')) {
-        return 'https://xstn-backend.onrender.com';
-    }
-    // Default production URL
-    return 'https://xstn-backend.onrender.com';
+    // Automatically use your Railway backend URL
+    // REPLACE this with your actual Railway URL once deployed
+    return 'https://your-backend-name.railway.app';
 }
 
 /**

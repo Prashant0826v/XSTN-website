@@ -4,6 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Apply for Internship - XSTN</title>
+  <meta name="description"
+    content="XSTN is a performance-driven technology execution network building scalable digital products, enterprise websites, and powerful web applications.">
+  <meta name="keywords"
+    content="technology, scalable web applications, tech network, developers, internship, AI systems, SaaS, UI/UX">
+  <meta name="author" content="Xplorevo Pvt Ltd">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -19,18 +26,27 @@
     <!-- CENTER LOGO -->
     <img src="media/nlogo.png" class="logo">
 
+    <!-- HAMBURGER MENU -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <!-- RIGHT MENU -->
-    <ul>
+    <ul id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="join.html">Join XSTN</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="join.html">Join XTN</a></li>
       <li><a href="partner.html">Partners</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
   </nav>
+
+  <script src="nav.js"></script>
 
 
   <!-- HERO -->
@@ -63,25 +79,29 @@
         </div>
 
         <div class="form-group">
-          <label>Internship Domain</label>
-          <select name="position" required>
-            <option value="">Select Domain</option>
-            <option value="frontend">Frontend Development</option>
-            <option value="backend">Backend Development</option>
-            <option value="fullstack">Full Stack Development</option>
-            <option value="ui_ux">UI/UX Design</option>
-            <option value="data_science">Data Science</option>
-          </select>
+          <label>University / College</label>
+          <input type="text" name="university" required>
         </div>
 
         <div class="form-group">
           <label>Technical Skills</label>
-          <textarea name="experience" placeholder="Example: HTML, CSS, JavaScript, Python" required></textarea>
+          <textarea name="skills" placeholder="Example: HTML, CSS, JavaScript, Python" required></textarea>
         </div>
 
         <div class="form-group">
-          <label>Why should we select you?</label>
-          <textarea name="cover_letter" required></textarea>
+          <label>Prior Experience</label>
+          <textarea name="experience" placeholder="Tell us about your previous internships or projects..."
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Portfolio Link (Optional)</label>
+          <input type="url" name="portfolio_url" placeholder="https://yourportfolio.com">
+        </div>
+
+        <div class="form-group">
+          <label>Resume Link (Google Drive / PDF)</label>
+          <input type="url" name="resume_url" placeholder="https://drive.google.com/..." required>
         </div>
 
         <button type="submit" class="submit-btn">Submit Application</button>
@@ -106,13 +126,14 @@
         full_name: form.querySelector('input[name="full_name"]').value,
         email: form.querySelector('input[name="email"]').value,
         phone: form.querySelector('input[name="phone"]').value,
-        position: form.querySelector('select[name="position"]').value,
+        university: form.querySelector('input[name="university"]').value,
+        skills: form.querySelector('textarea[name="skills"]').value,
         experience: form.querySelector('textarea[name="experience"]').value,
-        cover_letter: form.querySelector('textarea[name="cover_letter"]').value,
-        resume: null
+        portfolio_url: form.querySelector('input[name="portfolio_url"]')?.value || '',
+        resume_url: form.querySelector('input[name="resume_url"]')?.value || ''
       };
 
-      fetch("https://xstn-website-1.onrender.com/api/internship/", {
+      fetch("https://xstn-website-1.onrender.com/api/forms/internship-applications/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -126,7 +147,7 @@
           return response.json();
         })
         .then(data => {
-          if (data.id) {
+          if (data.id || data.data?.id) {
             // Show success message and hide form
             form.style.display = "none";
             form.reset();
@@ -157,13 +178,16 @@
         </p>
       </div>
 
-      <!-- QUICK LINKS -->
       <div>
+        <a href="testimonials.html" class="client-say-btn"
+          style="display: inline-block; background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; margin-bottom: 15px; font-weight: bold; transition: transform 0.3s ease, box-shadow 0.3s ease;">What
+          Our Clients Say</a>
         <h4>Quick Links</h4>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="projects.html">Projects</a>
+        <a href="team.html">Team</a>
         <a href="join.html">Internship Program</a>
 
       </div>

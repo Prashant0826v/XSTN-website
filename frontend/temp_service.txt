@@ -1,0 +1,201 @@
+﻿
+  
+frontend\style.css:866:
+  frontend\style.css:86
+7:.about-card:hover 
+.card-icon,
+> frontend\style.css:86
+8:.service-card:hover 
+.card-icon,
+  frontend\style.css:86
+9:.trust-card:hover 
+.card-icon,
+  frontend\style.css:87
+0:.project-card:hover 
+.card-icon {
+  frontend\style.css:87
+1:  transform: 
+scale(1.1) 
+rotate(5deg);
+  frontend\style.css:87
+2:  background: 
+rgba(139, 92, 246, 
+0.15);
+  frontend\style.css:87
+3:  border-color: 
+rgba(139, 92, 246, 
+0.3);
+  frontend\style.css:87
+4:}
+  
+frontend\style.css:875:
+  frontend\style.css:87
+6:.about-card:hover 
+.card-icon svg,
+> frontend\style.css:87
+7:.service-card:hover 
+.card-icon svg,
+  frontend\style.css:87
+8:.trust-card:hover 
+.card-icon svg,
+  frontend\style.css:87
+9:.project-card:hover 
+.card-icon svg {
+  frontend\style.css:88
+0:  stroke: #a78bfa;
+  frontend\style.css:88
+1:}
+  
+frontend\style.css:882:
+  frontend\style.css:88
+3:.about-card h3 {
+  frontend\style.css:88
+4:  margin-bottom: 
+12px;
+  frontend\style.css:88
+5:  font-size: 20px;
+  frontend\style.css:88
+6:  letter-spacing: 
+-0.01em;
+  frontend\style.css:88
+7:  color: #f8fafc;
+  
+frontend\style.css:921:
+  
+frontend\style.css:922:
+> frontend\style.css:92
+3:.service-card {
+  frontend\style.css:92
+4:  background: 
+rgba(15, 23, 42, 0.4);
+  frontend\style.css:92
+5:  padding: 40px 35px;
+  frontend\style.css:92
+6:  border-radius: 
+16px;
+  frontend\style.css:92
+7:  border: 1px solid 
+rgba(255, 255, 255, 
+0.05);
+  frontend\style.css:92
+8:  transition: all 
+0.4s 
+cubic-bezier(0.175, 
+0.885, 0.32, 1.275);
+  frontend\style.css:92
+9:  backdrop-filter: 
+blur(12px);
+  frontend\style.css:93
+0:  position: relative;
+  frontend\style.css:93
+1:  overflow: hidden;
+  frontend\style.css:93
+2:  text-align: left;
+  frontend\style.css:93
+3:}
+  
+frontend\style.css:934:
+> frontend\style.css:93
+5:.service-card::before
+ {
+  frontend\style.css:93
+6:  content: '';
+  frontend\style.css:93
+7:  position: absolute;
+  frontend\style.css:93
+8:  top: 0;
+  frontend\style.css:93
+9:  left: 0;
+  frontend\style.css:94
+0:  width: 100%;
+  frontend\style.css:94
+1:  height: 100%;
+  frontend\style.css:94
+2:  background: linear-
+gradient(180deg, 
+rgba(139, 92, 246, 
+0.08) 0%, transparent 
+100%);
+  frontend\style.css:94
+3:  opacity: 0;
+  frontend\style.css:94
+4:  transition: 
+opacity 0.3s ease;
+  frontend\style.css:94
+5:  pointer-events: 
+none;
+  frontend\style.css:94
+6:}
+  
+frontend\style.css:947:
+> frontend\style.css:94
+8:.service-card:hover {
+  frontend\style.css:94
+9:  transform: 
+translateY(-8px);
+  frontend\style.css:95
+0:  border-color: 
+rgba(139, 92, 246, 
+0.3);
+  frontend\style.css:95
+1:  box-shadow: 0 20px 
+40px rgba(0, 0, 0, 
+0.4), 0 0 20px 
+rgba(139, 92, 246, 
+0.1);
+  frontend\style.css:95
+2:}
+  
+frontend\style.css:953:
+> frontend\style.css:95
+4:.service-card:hover::
+before {
+  frontend\style.css:95
+5:  opacity: 1;
+  frontend\style.css:95
+6:}
+  
+frontend\style.css:957:
+> frontend\style.css:95
+8:.service-card h3 {
+  frontend\style.css:95
+9:  margin-bottom: 
+12px;
+  frontend\style.css:96
+0:  font-size: 20px;
+  frontend\style.css:96
+1:  letter-spacing: 
+-0.01em;
+  frontend\style.css:96
+2:  color: #f8fafc;
+  frontend\style.css:96
+3:}
+  
+frontend\style.css:964:
+> frontend\style.css:96
+5:.service-card p {
+  frontend\style.css:96
+6:  color: #94a3b8;
+  frontend\style.css:96
+7:  font-size: 15px;
+  frontend\style.css:96
+8:  line-height: 1.6;
+  frontend\style.css:96
+9:}
+  
+frontend\style.css:970:
+  frontend\style.css:97
+1:@media 
+(max-width:768px) {
+  frontend\style.css:97
+2:  .services-grid {
+  frontend\style.css:97
+3:    
+grid-template-columns: 
+1fr;
+  frontend\style.css:97
+4:  }
+  frontend\style.css:97
+5:}
+
+

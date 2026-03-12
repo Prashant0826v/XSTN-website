@@ -5,6 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partners - XTN</title>
+  <meta name="description"
+    content="XSTN is a performance-driven technology execution network building scalable digital products, enterprise websites, and powerful web applications.">
+  <meta name="keywords"
+    content="technology, scalable web applications, tech network, developers, internship, AI systems, SaaS, UI/UX">
+  <meta name="author" content="Xplorevo Pvt Ltd">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,18 +27,27 @@
     <!-- CENTER LOGO -->
     <img src="media/nlogo.png" class="logo">
 
+    <!-- HAMBURGER MENU -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <!-- RIGHT MENU -->
-    <ul>
+    <ul id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="join.html">Join XTN</a></li>
       <li><a href="partner.html">Partners</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
   </nav>
+
+  <script src="nav.js"></script>
 
 
   <!-- HERO -->
@@ -40,7 +56,7 @@
   <section class="partners-section">
     <div class="container">
 
-      <h2 class="section-title">Strategic Collaboration Opportunities</h2>
+      <h2 class="section-title">Strategic Collaboration <br><span class="highlight">Opportunities</span></h2>
       <p class="section-subtitle">
         We build long-term partnerships that create value for both sides.
       </p>
@@ -49,6 +65,12 @@
 
         <!-- Referral Partners -->
         <div class="partner-card">
+          <svg class="partner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <polyline points="16 11 18 13 22 9"></polyline>
+          </svg>
           <h3>Referral Partners</h3>
           <p>
             Collaborate with us by referring clients who require digital solutions.
@@ -58,6 +80,11 @@
 
         <!-- Internship Providers -->
         <div class="partner-card">
+          <svg class="partner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
           <h3>Internship Providers</h3>
           <p>
             Partner with us to provide structured internship programs for students.
@@ -97,10 +124,44 @@
       <h2>Why Partner With XTN?</h2>
 
       <div class="why-grid">
-        <div class="why-card">Long-term Growth</div>
-        <div class="why-card">Transparent Collaboration</div>
-        <div class="why-card">Shared Innovation</div>
-        <div class="why-card">Scalable Opportunities</div>
+        <div class="why-card">
+          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+          <h4>Long-term Growth</h4>
+        </div>
+        <div class="why-card">
+          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <h4>Transparent Collaboration</h4>
+        </div>
+        <div class="why-card">
+          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"></path>
+            <path d="M10 22h4"></path>
+            <path
+              d="M12 2A7 7 0 0 0 5 9c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z">
+            </path>
+          </svg>
+          <h4>Shared Innovation</h4>
+        </div>
+        <div class="why-card">
+          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <h4>Scalable Opportunities</h4>
+        </div>
       </div>
     </div>
   </section>
@@ -108,31 +169,80 @@
 
   <!-- PARTNER TYPES ZIG ZAG -->
   <section class="partner-zigzag">
+    <div class="container">
 
-    <div class="partner-row">
-      <img src="media/referral.webp">
-      <div>
-        <h3>Referral Partners</h3>
-        <p>Refer clients and earn through successful conversions.</p>
+      <div class="partner-row">
+        <div class="partner-icon-wrapper">
+          <svg class="partner-large-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+        </div>
+        <div class="partner-text">
+          <h3>Referral Partners</h3>
+          <p class="lead-text">Refer clients and earn through successful project conversions.</p>
+          <ul class="partner-benefits">
+            <li><span class="check-icon">✓</span> <strong>Uncapped Earnings:</strong> Earn a transparent commission
+              percentage on every successfully closed project.</li>
+            <li><span class="check-icon">✓</span> <strong>Dedicated Sales Support:</strong> Access our internal
+              technical teams to help you pitch and close deals effectively.</li>
+            <li><span class="check-icon">✓</span> <strong>Long-term Value:</strong> Build a recurring revenue stream
+              with clients who require ongoing maintenance and scaling.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="partner-row reverse">
-      <img src="media/internship.webp">
-      <div>
-        <h3>Internship Providers</h3>
-        <p>Offer students real-world experience with structured programs.</p>
+      <div class="partner-row reverse">
+        <div class="partner-icon-wrapper">
+          <svg class="partner-large-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="partner-text">
+          <h3>Internship Providers</h3>
+          <p class="lead-text">Offer students real-world experience through structured tech programs.</p>
+          <ul class="partner-benefits">
+            <li><span class="check-icon">✓</span> <strong>Industry-Ready Curriculum:</strong> We provide real-world,
+              production-level projects to bridge the gap between academia.</li>
+            <li><span class="check-icon">✓</span> <strong>Mentorship & Guidance:</strong> Students receive direct
+              mentorship from our senior engineers and tech leads.</li>
+            <li><span class="check-icon">✓</span> <strong>Placement Assistance:</strong> Top-performing interns are
+              fast-tracked for full-time roles within the XTN ecosystem.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="partner-row">
-      <img src="media/developer.webp">
-      <div>
-        <h3>Technology Collaborators</h3>
-        <p>Build products and platforms together.</p>
+      <div class="partner-row">
+        <div class="partner-icon-wrapper">
+          <svg class="partner-large-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"></path>
+            <path d="M10 22h4"></path>
+            <path
+              d="M12 2A7 7 0 0 0 5 9c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z">
+            </path>
+          </svg>
+        </div>
+        <div class="partner-text">
+          <h3>Technology Collaborators</h3>
+          <p class="lead-text">Build disruptive products and scalable platforms together.</p>
+          <ul class="partner-benefits">
+            <li><span class="check-icon">✓</span> <strong>Resource Sharing:</strong> Combine technical expertise and
+              intellectual property to build superior software solutions.</li>
+            <li><span class="check-icon">✓</span> <strong>Joint Go-To-Market:</strong> Co-market products to open up new
+              audiences, expanding our collective market reach.</li>
+            <li><span class="check-icon">✓</span> <strong>API Integration:</strong> We integrate deeply with your
+              existing systems to create unified ecosystems for shared clients.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
+    </div>
   </section>
 
 
@@ -142,10 +252,26 @@
       <h2>How Collaboration Works</h2>
 
       <div class="steps-grid">
-        <div class="step">1. Apply</div>
-        <div class="step">2. Discussion</div>
-        <div class="step">3. Agreement</div>
-        <div class="step">4. Launch</div>
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Apply</h3>
+          <p>Submit your partner application.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Discussion</h3>
+          <p>Align goals and terms.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Agreement</h3>
+          <p>Sign the partnership agreement.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Launch</h3>
+          <p>Start collaborating and earning.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -163,13 +289,16 @@
         </p>
       </div>
 
-      <!-- QUICK LINKS -->
       <div>
+        <a href="testimonials.html" class="client-say-btn"
+          style="display: inline-block; background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; margin-bottom: 15px; font-weight: bold; transition: transform 0.3s ease, box-shadow 0.3s ease;">What
+          Our Clients Say</a>
         <h4>Quick Links</h4>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="projects.html">Projects</a>
+        <a href="team.html">Team</a>
         <a href="join.html">Internship Program</a>
 
       </div>
@@ -177,7 +306,8 @@
       <!-- CONTACT -->
       <div>
         <h4>Contact</h4>
-        <p>Email: contact@xtn.com</p>
+        <p>Email: <a href="mailto:projects@xplorevo.tech"
+            style="color: #38bdf8; text-decoration: none;">projects@xplorevo.tech</a></p>
         <p>Powered by <a href="https://xplorevo.com" target="_blank" class="xplorevo-link">Xplorevo Pvt Ltd</a></p>
       </div>
 

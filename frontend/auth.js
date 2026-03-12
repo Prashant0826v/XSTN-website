@@ -2,7 +2,6 @@
  * XSTN Authentication System
  * Handles signup, login, OTP verification, JWT token management, and auth state.
  */
-
 const API_BASE = 'https://xstn-website-fvon.onrender.com';
 
 // ==================== TOKEN MANAGEMENT ====================
@@ -297,11 +296,11 @@ if (loginForm) {
         const form = this;
         const submitBtn = form.querySelector('.submit-btn');
 
-        const email = form.querySelector('input[name="email"]').value;
+        const username = form.querySelector('input[name="username"]').value;
         const password = form.querySelector('input[name="password"]').value;
 
-        if (!email || !password) {
-            showErrorPopup('Please enter email and password.');
+        if (!username || !password) {
+            showErrorPopup('Please enter username and password.');
             return;
         }
 
@@ -313,7 +312,7 @@ if (loginForm) {
             const response = await fetch(`${API_BASE}/api/token/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ username, password })
             });
 
             if (response.ok) {
@@ -328,15 +327,25 @@ if (loginForm) {
                 if (profileRes.ok) {
                     const user = await profileRes.json();
                     saveUser(user);
-                }
 
-                showSuccessPopup('Login successful! Redirecting to dashboard...', form);
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
+                    // Redirect admins to admin.html, normal users to dashboard.html
+                    const isAdmin = user.is_superuser || user.is_staff || user.username === 'admin' || user.username === 'owner';
+                    const redirectUrl = isAdmin ? 'admin.html' : 'dashboard.html';
+
+                    showSuccessPopup(`Login successful! Redirecting to ${isAdmin ? 'admin dashboard' : 'dashboard'}...`, form);
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 1500);
+                } else {
+                    // Fallback to normal dashboard if profile fetch fails
+                    showSuccessPopup('Login successful! Redirecting to dashboard...', form);
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                }
             } else {
                 const data = await response.json();
-                showErrorPopup(data.detail || 'Invalid email or password.');
+                showErrorPopup(data.detail || 'Invalid username or password.');
             }
         } catch (error) {
             console.error('Login error:', error);

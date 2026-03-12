@@ -126,6 +126,7 @@ class DeveloperApplication(VerifiableFormMixin):
     skills = models.TextField()
     portfolio_url = models.URLField(blank=True, null=True)
     github_url = models.URLField(blank=True, null=True)
+    resume_url = models.URLField(blank=True, null=True)
     message = models.TextField()
     status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('reviewed', 'Reviewed'), ('selected', 'Selected'), ('rejected', 'Rejected')], default='pending')
     is_read = models.BooleanField(default=False)

@@ -12,8 +12,8 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 
   const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
   const apiUrl = isLocal 
-    ? "http://127.0.0.1:8000/api/forms/contact-forms/" 
-    : "https://xstn-website-production.up.railway.app/api/forms/contact-forms/";
+    ? "http://127.0.0.1:8000/api/contact/" 
+    : "https://xstn-website-production.up.railway.app/api/contact/";
 
   fetch(apiUrl, {
     method: "POST",

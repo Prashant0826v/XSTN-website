@@ -184,6 +184,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
     "https://xstn-website-production.up.railway.app",
     "https://amazing-otter-fe4935.netlify.app",
+    "https://69b4ea8fc0ed48db967a3a10--amazing-otter-fe4935.netlify.app", # Explicit preview domain
     "https://*.netlify.app",
 ]
 

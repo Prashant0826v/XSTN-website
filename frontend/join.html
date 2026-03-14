@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
 </head>
 
 <body>
@@ -59,15 +60,34 @@
 
       </form>
 
+      <div id="successMsg" style="display: none; text-align: center; margin-top: 20px;">
+        <h3 style="color: #22c55e; margin-bottom: 10px;">Application Submitted Successfully!</h3>
+        <p style="color: #cbd5e1;">We have received your application and will review it shortly.</p>
+      </div>
+
 
 
     </div>
 
   </section>
 
+  <script>
+    console.log('INLINE SCRIPT EXECUTING');
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM CONTENT LOADED');
+        const f = document.getElementById('joinForm');
+        if (f) {
+            f.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('INLINE SUBMIT PREVENT DEFAULT REACHED!!!');
+            });
+        } else {
+            console.log('JOIN FORM NULL!');
+        }
+    });
+  </script>
   <script src="popup.js"></script>
   <script src="join.js"></script>
-  <script src="auth.js"></script>
-</body>
+<script src="main.js"></script>`n</body>
 
 </html>

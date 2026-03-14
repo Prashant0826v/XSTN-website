@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 console.log("Submitting proposal:", formData);
 
-                fetch("https://xstn-website-1.onrender.com/api/proposal/", {
+                fetch("http://127.0.0.1:8000/api/forms/inquiry-forms/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -39,12 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .then(data => {
                         console.log("Success:", data);
-                        alert("✅ Proposal submitted successfully! We'll review it and contact you soon.");
-                        form.reset();
+                        showSuccessPopup("Proposal submitted successfully! We'll review it and contact you soon.", form);
                     })
                     .catch(error => {
                         console.error("Error:", error);
-                        alert("❌ Error submitting proposal: " + error.message);
+                        showErrorPopup("Error submitting proposal. Please try again later.");
                     });
             });
         }

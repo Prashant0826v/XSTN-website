@@ -9,7 +9,7 @@ document.getElementById("joinForm").addEventListener("submit", function (e) {
     message: form.querySelector('textarea[name="message"]').value
   };
 
-  fetch("https://xstn-website-1.onrender.com/api/join/", {
+  fetch("http://127.0.0.1:8000/api/forms/join-applications/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -24,18 +24,13 @@ document.getElementById("joinForm").addEventListener("submit", function (e) {
     })
     .then(data => {
       if (data.id) {
-        // Show success message and hide form
-        form.style.display = "none";
-        form.reset();
-        const successMsg = document.getElementById("successMsg");
-        successMsg.style.display = "block";
-        successMsg.scrollIntoView({ behavior: 'smooth' });
+        showSuccessPopup("Your application has been received successfully. We will review it shortly.", form);
       } else {
-        alert("Error: " + JSON.stringify(data));
+        showErrorPopup("Error: " + (data.detail || JSON.stringify(data)));
       }
     })
     .catch(error => {
       console.error("Error:", error);
-      alert("Error submitting form: " + error);
+      showErrorPopup("Error submitting form: " + error.message);
     });
 });

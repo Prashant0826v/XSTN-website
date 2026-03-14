@@ -16,7 +16,7 @@ document.getElementById("internshipForm").addEventListener("submit", function (e
         resume: null
     };
 
-    fetch("https://xstn-website-1.onrender.com/api/internship/", {
+    fetch("http://127.0.0.1:8000/api/forms/internship-applications/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

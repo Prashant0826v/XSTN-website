@@ -2,7 +2,7 @@
  * XSTN Authentication System
  * Handles signup, login, OTP verification, JWT token management, and auth state.
  */
-const API_BASE = 'https://xstn-website-fvon.onrender.com';
+const API_BASE = 'http://127.0.0.1:8000';
 
 // ==================== TOKEN MANAGEMENT ====================
 
@@ -267,12 +267,11 @@ if (signupForm) {
                 localStorage.setItem('xstn_verify_email', email);
                 showSuccessPopup(
                     'Account created! A verification code has been sent to your email.',
-                    form
+                    form,
+                    () => {
+                        window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
+                    }
                 );
-                // Redirect to verify page after popup closes
-                setTimeout(() => {
-                    window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
-                }, 2500);
             } else {
                 const errors = Object.values(data).flat().join('. ');
                 showErrorPopup(errors || 'Registration failed. Please try again.');
@@ -332,16 +331,22 @@ if (loginForm) {
                     const isAdmin = user.is_superuser || user.is_staff || user.username === 'admin' || user.username === 'owner';
                     const redirectUrl = isAdmin ? 'admin.html' : 'dashboard.html';
 
-                    showSuccessPopup(`Login successful! Redirecting to ${isAdmin ? 'admin dashboard' : 'dashboard'}...`, form);
-                    setTimeout(() => {
-                        window.location.href = redirectUrl;
-                    }, 1500);
+                    showSuccessPopup(
+                        `Login successful! Redirecting to ${isAdmin ? 'admin dashboard' : 'dashboard'}...`, 
+                        form,
+                        () => {
+                            window.location.href = redirectUrl;
+                        }
+                    );
                 } else {
                     // Fallback to normal dashboard if profile fetch fails
-                    showSuccessPopup('Login successful! Redirecting to dashboard...', form);
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1500);
+                    showSuccessPopup(
+                        'Login successful! Redirecting to dashboard...', 
+                        form,
+                        () => {
+                            window.location.href = 'dashboard.html';
+                        }
+                    );
                 }
             } else {
                 const data = await response.json();

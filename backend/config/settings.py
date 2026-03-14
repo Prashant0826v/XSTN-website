@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -85,27 +86,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # Use SQLite for development (default), PostgreSQL for production
-DB_ENGINE = get_env('DB_ENGINE', default='sqlite')
+DATABASES = {
+    'default': dj_database_url.config(
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+        conn_max_age=600,
+        ssl_require=False if os.getenv('DATABASE_URL', '').startswith('sqlite') else True
+    )
+}
 
-if DB_ENGINE == 'postgresql':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': get_env('DB_NAME', default='xstn_db'),
-            'USER': get_env('DB_USER', default='postgres'),
-            'PASSWORD': get_env('DB_PASSWORD', default='postgres'),
-            'HOST': get_env('DB_HOST', default='localhost'),
-            'PORT': get_env('DB_PORT', default='5432'),
-        }
-    }
+# SSL/TLS adjustment for some providers (like Render/Railway)
+if 'DATABASE_URL' in os.environ and not os.environ['DATABASE_URL'].startswith('sqlite'):
+    DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
 else:
-    # SQLite for development (no server needed)
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+    # If no SSL required or using sqlite
+    if 'OPTIONS' in DATABASES['default']:
+        DATABASES['default'].pop('OPTIONS')
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -192,21 +187,27 @@ CORS_ALLOW_CREDENTIALS = True
 # Email Configuration
 # Using console backend for development - prints emails to server logs
 # This allows testing without valid SMTP credentials
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Commented out - will be enabled only when SMTP credentials are verified
-# SMTP_USER = get_env('SMTP_USER', default='')
-# SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
-#
-# if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
-#     EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
-#     EMAIL_USE_TLS = True
-#     EMAIL_HOST_USER = SMTP_USER
-#     EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+SMTP_USER = get_env('SMTP_USER', default='')
+SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
 
-
+if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
+    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = SMTP_USER
+    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+else:
+    # Fallback to true SMTP with hardcoded values or failure if none provided
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
+    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = SMTP_USER
+    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
 
 DEFAULT_FROM_EMAIL = get_env('FROM_EMAIL', default='noreply@xstn.tech')
 ADMIN_EMAIL = 'prashant.iron2@gmail.com'

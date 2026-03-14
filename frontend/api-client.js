@@ -15,7 +15,7 @@
  * }
  */
 
-const API_BASE_URL = 'https://xstn-website-fvon.onrender.com';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
 // For production, update to:
 // const API_BASE_URL = 'https://api.xstn.com';
@@ -90,7 +90,7 @@ async function submitForm(endpoint, data) {
  * @returns {Promise} Result object
  */
 async function submitContactForm(formData) {
-    return submitForm('api/contact/', {
+    return submitForm('api/forms/contact-forms/', {
         full_name: formData.full_name || formData.name || '',
         email: formData.email || '',
         phone: formData.phone || '',
@@ -105,7 +105,7 @@ async function submitContactForm(formData) {
  * @returns {Promise} Result object
  */
 async function submitProposalForm(formData) {
-    return submitForm('api/proposal/', {
+    return submitForm('api/forms/inquiry-forms/', {
         name: formData.name || '',
         email: formData.email || '',
         company: formData.company || '',
@@ -122,7 +122,7 @@ async function submitProposalForm(formData) {
  * @returns {Promise} Result object
  */
 async function submitInternshipApplication(formData) {
-    return submitForm('api/internship/', {
+    return submitForm('api/forms/internship-applications/', {
         full_name: formData.full_name || formData.fullName || '',
         email: formData.email || '',
         phone: formData.phone || '',
@@ -139,7 +139,7 @@ async function submitInternshipApplication(formData) {
  * @returns {Promise} Result object
  */
 async function submitDeveloperApplication(formData) {
-    return submitForm('api/developer-application/', {
+    return submitForm('api/forms/developer-applications/', {
         full_name: formData.full_name || formData.fullName || '',
         email: formData.email || '',
         phone: formData.phone || '',
@@ -158,7 +158,7 @@ async function submitDeveloperApplication(formData) {
  * @returns {Promise} Result object
  */
 async function submitJoinCommunity(formData) {
-    return submitForm('api/join/', {
+    return submitForm('api/forms/join-applications/', {
         full_name: formData.full_name || formData.fullName || '',
         email: formData.email || '',
         role: formData.role || formData.role_interested || '',
@@ -172,7 +172,7 @@ async function submitJoinCommunity(formData) {
  * @returns {Promise} Result object
  */
 async function submitConsultationRequest(formData) {
-    return submitForm('api/consultation/', {
+    return submitForm('api/forms/consultation-requests/', {
         full_name: formData.full_name || formData.fullName || '',
         email: formData.email || '',
         phone: formData.phone || '',
@@ -188,7 +188,7 @@ async function submitConsultationRequest(formData) {
  * @returns {Promise} Result object
  */
 async function subscribeNewsletter(email) {
-    return submitForm('api/newsletter/', {
+    return submitForm('api/forms/newsletter-subscriptions/', {
         email: email || ''
     });
 }
@@ -199,7 +199,7 @@ async function subscribeNewsletter(email) {
  * @returns {Promise} Result object
  */
 async function submitTestimonial(formData) {
-    return submitForm('api/testimonial/', {
+    return submitForm('api/forms/testimonials/', {
         name: formData.name || '',
         company: formData.company || '',
         email: formData.email || '',

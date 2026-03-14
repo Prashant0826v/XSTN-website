@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 console.log("Submitting developer application:", formData);
 
-                fetch("https://xstn-website-1.onrender.com/api/developer-application/", {
+                fetch("http://127.0.0.1:8000/api/forms/developer-applications/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -45,12 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .then(data => {
                         console.log("Success:", data);
-                        alert("✅ Application submitted! Our team will review it and contact you soon.");
-                        form.reset();
+                        showSuccessPopup("Application submitted! Our team will review it and contact you soon.", form);
                     })
                     .catch(error => {
                         console.error("Error:", error);
-                        alert("❌ Error submitting application: " + error.message);
+                        showErrorPopup("Error submitting application. Please try again later.");
                     });
             });
         }

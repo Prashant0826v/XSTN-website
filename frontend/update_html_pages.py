@@ -20,7 +20,7 @@ navbar_html = '''    <!-- NAVBAR -->
         </div>
 
         <!-- CENTER LOGO -->
-        <img src="assets/icons/nlogo.png" class="logo">
+        <img src="media/XTN.jpeg" class="logo">
 
         <!-- RIGHT MENU -->
         <ul>

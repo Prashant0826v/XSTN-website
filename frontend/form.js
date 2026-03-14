@@ -10,7 +10,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     phone: ""
   };
 
-  fetch("https://xstn-website-1.onrender.com/api/contact/", {
+  fetch("http://127.0.0.1:8000/api/forms/contact-forms/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -25,18 +25,13 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     })
     .then(data => {
       if (data.id) {
-        // Show success message and hide form
-        form.style.display = "none";
-        form.reset();
-        const successMsg = document.getElementById("contactSuccess");
-        successMsg.style.display = "block";
-        successMsg.scrollIntoView({ behavior: 'smooth' });
+        showSuccessPopup("Your message has been sent successfully! We will get back to you shortly.", form);
       } else {
-        alert("Error: " + JSON.stringify(data));
+        showErrorPopup("Error: " + (data.detail || JSON.stringify(data)));
       }
     })
     .catch(error => {
       console.error("Error:", error);
-      alert("Error submitting form: " + error);
+      showErrorPopup("Error submitting form: " + error.message);
     });
 });

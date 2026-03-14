@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             console.log("Submitting consultation:", formData);
 
-            fetch("https://xstn-website-1.onrender.com/api/consultation/", {
+            fetch("http://127.0.0.1:8000/api/consultation/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -38,12 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     console.log("Success:", data);
-                    alert("✅ Consultation request submitted! We'll contact you to schedule a time.");
-                    form.reset();
+                    showSuccessPopup("Consultation request submitted! We'll contact you to schedule a time.", form);
                 })
                 .catch(error => {
                     console.error("Error:", error);
-                    alert("❌ Error submitting request: " + error.message);
+                    showErrorPopup("Error submitting request. Please try again later.");
                 });
         });
     }

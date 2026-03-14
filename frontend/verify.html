@@ -58,6 +58,7 @@
             margin-top: 4px;
         }
     </style>
+  <script src="config.js"></script>
 </head>
 
 <body>
@@ -92,7 +93,7 @@
     <script src="popup.js"></script>
     <script>
         (function () {
-            const API_BASE = 'https://xstn-website-1.onrender.com';
+            const API_BASE = typeof CONFIG !== 'undefined' ? CONFIG.API_BASE_URL : 'http://127.0.0.1:8000';
 
             // Get email from URL params or localStorage
             const urlParams = new URLSearchParams(window.location.search);
@@ -240,6 +241,6 @@
         })();
     </script>
 
-</body>
+<script src="main.js"></script>`n</body>
 
 </html>

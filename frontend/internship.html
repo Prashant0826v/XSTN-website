@@ -13,6 +13,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
     </div>
 
     <!-- CENTER LOGO -->
-    <img src="media/nlogo.png" class="logo">
+    <img src="media/XTN.jpeg" class="logo">
 
     <!-- HAMBURGER MENU -->
     <div class="menu-toggle" id="mobile-menu">
@@ -133,7 +134,7 @@
         resume_url: form.querySelector('input[name="resume_url"]')?.value || ''
       };
 
-      fetch("https://xstn-website-1.onrender.com/api/forms/internship-applications/", {
+      fetch("http://127.0.0.1:8000/api/forms/internship-applications/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -148,12 +149,7 @@
         })
         .then(data => {
           if (data.id || data.data?.id) {
-            // Show success message and hide form
-            form.style.display = "none";
-            form.reset();
-            const successMsg = document.getElementById("internSuccess");
-            successMsg.style.display = "block";
-            successMsg.scrollIntoView({ behavior: 'smooth' });
+            showSuccessPopup("Your internship application has been submitted successfully! We'll review it and contact you soon.", form);
           } else {
             alert("Error: " + JSON.stringify(data));
           }
@@ -206,6 +202,6 @@
     </p>
 
   </footer>
-</body>
+<script src="main.js"></script>`n</body>
 
 </html>

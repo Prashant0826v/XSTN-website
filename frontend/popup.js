@@ -3,7 +3,7 @@
  * Premium animated modal popup for form submissions.
  */
 
-function showPopup(type, title, message, formElement) {
+function showPopup(type, title, message, formElement, onCloseCallback) {
   // Remove existing popup if any
   const existing = document.querySelector('.xstn-popup-overlay');
   if (existing) existing.remove();
@@ -46,6 +46,9 @@ function showPopup(type, title, message, formElement) {
         formElement.reset();
         formElement.style.display = '';
       }
+      if (typeof onCloseCallback === 'function') {
+        onCloseCallback();
+      }
     }, 300);
   };
 
@@ -55,8 +58,8 @@ function showPopup(type, title, message, formElement) {
   });
 }
 
-function showSuccessPopup(message, formElement) {
-  showPopup('success', 'Successfully Submitted!', message, formElement);
+function showSuccessPopup(message, formElement, onCloseCallback) {
+  showPopup('success', 'Successfully Submitted!', message, formElement, onCloseCallback);
 }
 
 function showErrorPopup(message) {

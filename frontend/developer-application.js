@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
                 const apiUrl = isLocal 
                     ? "http://127.0.0.1:8000/api/developer-application/" 
-                    : "https://xstn-website-production.up.railway.app/api/developer-application/";
+                    : "https://xstn-backend.onrender.com/api/developer-application/";
 
                 fetch(apiUrl, {
                     method: "POST",

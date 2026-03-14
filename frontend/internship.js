@@ -19,7 +19,7 @@ document.getElementById("internshipForm").addEventListener("submit", function (e
     const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
     const apiUrl = isLocal 
         ? "http://127.0.0.1:8000/api/internship/" 
-        : "https://xstn-website-production.up.railway.app/api/internship/";
+        : "https://xstn-backend.onrender.com/api/internship/";
 
     fetch(apiUrl, {
         method: "POST",

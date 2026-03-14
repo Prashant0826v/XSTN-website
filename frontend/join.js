@@ -12,7 +12,7 @@ document.getElementById("joinForm").addEventListener("submit", function (e) {
   const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
   const apiUrl = isLocal 
     ? "http://127.0.0.1:8000/api/join/" 
-    : "https://xstn-website-production.up.railway.app/api/join/";
+    : "https://xstn-backend.onrender.com/api/join/";
 
   fetch(apiUrl, {
     method: "POST",

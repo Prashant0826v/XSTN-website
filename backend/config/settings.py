@@ -175,89 +175,41 @@ SIMPLE_JWT = {
     'SIGNING_KEY': SECRET_KEY,
 }
 
-# CORS Configuration
-CORS_ALLOW_ALL_ORIGINS = True  # Broadest possible for debugging
-CORS_ALLOW_CREDENTIALS = False # Must be False if using wildcard origin in some browsers
+# CORS & CSRF Configuration
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
-# CSRF protection 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
     "https://xstn-website-production.up.railway.app",
     "https://amazing-otter-fe4935.netlify.app",
-    "https://69b4ea8fc0ed48db967a3a10--amazing-otter-fe4935.netlify.app", # Explicit preview domain
+    "https://69b4ea8fc0ed48db967a3a10--amazing-otter-fe4935.netlify.app",
     "https://*.netlify.app",
 ]
-
-# Email Configuration
-# Using console backend for development - prints emails to server logs
-# This allows testing without valid SMTP credentials
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# Commented out - will be enabled only when SMTP credentials are verified
-SMTP_USER = get_env('SMTP_USER', default='')
-SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
-
-if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
-    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = SMTP_USER
-    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
-else:
-    # Fallback to true SMTP with hardcoded values or failure if none provided
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
-    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = SMTP_USER
-    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
-
-DEFAULT_FROM_EMAIL = get_env('FROM_EMAIL', default='noreply@xstn.tech')
-ADMIN_EMAIL = 'prashant.iron2@gmail.com'
-
-# Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-}
-
-# ==================== ENHANCED SECURITY SETTINGS ====================
-
-# User authentication model
-AUTH_USER_MODEL = 'users.User'
-
-# Session security
-SESSION_COOKIE_SECURE = not DEBUG
-SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_AGE = 86400  # 24 hours
 
 # CSRF protection 
 CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = False  # Allow JS to read if needed, sometimes helps with certain proxy setups
+CSRF_COOKIE_HTTPONLY = False 
 CSRF_COOKIE_SAMESITE = 'Lax'
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
-    "https://xstn-website-production.up.railway.app",  # Explicit domain
-    "https://*.netlify.app",
-]
 
 # Security headers
 SECURE_SSL_REDIRECT = False  # Railway proxy handles SSL; disabling to rule out redirect issues with fetch/CORS

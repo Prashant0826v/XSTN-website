@@ -211,6 +211,59 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = False 
 CSRF_COOKIE_SAMESITE = 'Lax'
 
+# Email Configuration
+SMTP_USER = get_env('SMTP_USER', default='')
+SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
+
+if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
+    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = SMTP_USER
+    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
+    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = SMTP_USER
+    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+
+DEFAULT_FROM_EMAIL = get_env('FROM_EMAIL', default='noreply@xstn.tech')
+ADMIN_EMAIL = 'prashant.iron2@gmail.com'
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+}
+
+# User authentication model
+AUTH_USER_MODEL = 'users.User'
+
+# Session security
+SESSION_COOKIE_SECURE = not DEBUG
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_AGE = 86400  # 24 hours
+
 # Security headers
 SECURE_SSL_REDIRECT = False  # Railway proxy handles SSL; disabling to rule out redirect issues with fetch/CORS
 SECURE_BROWSER_XSS_FILTER = True

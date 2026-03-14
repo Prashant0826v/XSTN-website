@@ -40,6 +40,7 @@ class ContactMessageViewSet(viewsets.ModelViewSet):
 @permission_classes([AllowAny])
 def join_community_api(request):
     """API endpoint for submitting join community form"""
+    print(f"DEBUG: join_community_api received request: {request.data}")
     serializer = JoinCommunitySerializer(data=request.data)
     if serializer.is_valid():
         instance = serializer.save()

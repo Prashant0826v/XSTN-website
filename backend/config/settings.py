@@ -228,13 +228,9 @@ if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = SMTP_USER
     EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+    EMAIL_TIMEOUT = 5  # Prevent hanging on Railway
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
-    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = SMTP_USER
-    EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = get_env('FROM_EMAIL', default='noreply@xstn.tech')
 ADMIN_EMAIL = 'prashant.iron2@gmail.com'

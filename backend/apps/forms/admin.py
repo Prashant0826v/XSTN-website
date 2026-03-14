@@ -6,9 +6,9 @@ from .models import (
 
 @admin.register(ContactForm)
 class ContactFormAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'subject', 'is_read', 'created_at']
+    list_display = ['full_name', 'email', 'subject', 'is_read', 'created_at']
     list_filter = ['is_read', 'created_at']
-    search_fields = ['name', 'email', 'subject']
+    search_fields = ['full_name', 'email', 'subject']
     ordering = ['-created_at']
     readonly_fields = ['created_at']
     actions = ['mark_as_read']
@@ -20,9 +20,9 @@ class ContactFormAdmin(admin.ModelAdmin):
 
 @admin.register(InquiryForm)
 class InquiryFormAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'project_type', 'is_read', 'created_at']
+    list_display = ['full_name', 'email', 'project_type', 'is_read', 'created_at']
     list_filter = ['project_type', 'is_read', 'created_at']
-    search_fields = ['name', 'email', 'project_type']
+    search_fields = ['full_name', 'email', 'project_type']
     ordering = ['-created_at']
     readonly_fields = ['created_at']
     actions = ['mark_as_read']

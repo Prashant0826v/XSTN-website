@@ -40,7 +40,7 @@ class VerifiableFormMixin(models.Model):
 
 class ContactForm(VerifiableFormMixin):
     """Contact form submission model"""
-    name = models.CharField(max_length=255)
+    full_name = models.CharField(max_length=255, default="")
     email = models.EmailField()
     phone = models.CharField(max_length=20, blank=True, null=True)
     subject = models.CharField(max_length=255)
@@ -54,12 +54,12 @@ class ContactForm(VerifiableFormMixin):
         verbose_name_plural = 'Contact Forms'
 
     def __str__(self):
-        return f"{self.name} - {self.subject}"
+        return f"{self.full_name} - {self.subject}"
 
 
 class InquiryForm(VerifiableFormMixin):
     """Project inquiry/proposal form model"""
-    name = models.CharField(max_length=255)
+    full_name = models.CharField(max_length=255, default="")
     email = models.EmailField()
     company = models.CharField(max_length=255, blank=True, null=True)
     project_type = models.CharField(max_length=255)
@@ -75,7 +75,7 @@ class InquiryForm(VerifiableFormMixin):
         verbose_name_plural = 'Inquiry Forms'
 
     def __str__(self):
-        return f"{self.name} - {self.project_type}"
+        return f"{self.full_name} - {self.project_type}"
 
 
 class InternshipApplication(VerifiableFormMixin):

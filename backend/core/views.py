@@ -64,6 +64,8 @@ def test_email_api(request):
             'backend': settings.EMAIL_BACKEND,
             'host': settings.EMAIL_HOST,
             'port': settings.EMAIL_PORT,
+            'use_tls': getattr(settings, 'EMAIL_USE_TLS', False),
+            'use_ssl': getattr(settings, 'EMAIL_USE_SSL', False),
             'from': settings.DEFAULT_FROM_EMAIL
         })
     except Exception as e:
@@ -73,7 +75,9 @@ def test_email_api(request):
             'error_message': str(e),
             'backend': settings.EMAIL_BACKEND,
             'host': settings.EMAIL_HOST,
-            'port': settings.EMAIL_PORT
+            'port': settings.EMAIL_PORT,
+            'use_tls': getattr(settings, 'EMAIL_USE_TLS', False),
+            'use_ssl': getattr(settings, 'EMAIL_USE_SSL', False),
         }, status=500)
 
 @csrf_exempt

@@ -179,6 +179,10 @@ SIMPLE_JWT = {
 # CORS & CSRF Configuration
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://amazing-otter-fe4935.netlify.app",
+    "https://69b4ea8fc0ed48db967a3a10--amazing-otter-fe4935.netlify.app",
+]
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",

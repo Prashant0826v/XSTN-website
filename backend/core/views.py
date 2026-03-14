@@ -42,6 +42,36 @@ def test_check_api(request):
     """Simple API check"""
     return Response({'status': 'ok', 'working': True})
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def test_email_api(request):
+    """Diagnostic endpoint to test SMTP settings"""
+    target_email = request.query_params.get('email', settings.ADMIN_EMAIL)
+    subject = "XSTN - SMTP Diagnostic Test"
+    message = "If you are reading this, your Railway SMTP settings are working perfectly!"
+    
+    try:
+        send_mail(
+            subject, 
+            message, 
+            settings.DEFAULT_FROM_EMAIL, 
+            [target_email], 
+            fail_silently=False
+        )
+        return Response({
+            'status': 'success',
+            'message': f'Test email sent to {target_email}',
+            'backend': settings.EMAIL_BACKEND,
+            'from': settings.DEFAULT_FROM_EMAIL
+        })
+    except Exception as e:
+        return Response({
+            'status': 'error',
+            'error_type': str(type(e).__name__),
+            'error_message': str(e),
+            'backend': settings.EMAIL_BACKEND
+        }, status=500)
+
 @csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])

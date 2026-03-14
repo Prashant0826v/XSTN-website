@@ -250,11 +250,12 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_AGE = 86400  # 24 hours
 
 # CSRF protection 
-CSRF_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False  # Allow JS to read if needed, sometimes helps with certain proxy setups
 CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
+    "https://xstn-website-production.up.railway.app",  # Explicit domain
     "https://*.netlify.app",
 ]
 

@@ -27,8 +27,14 @@ DEBUG = get_env_bool('DEBUG', default=True)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    '.railway.app',  # Allow all Railway domains
     '*',
 ]
+
+# Railway specific security
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 
 # Application definition
 INSTALLED_APPS = [
@@ -247,7 +253,10 @@ SESSION_COOKIE_AGE = 86400  # 24 hours
 CSRF_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = 'Lax'
-CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+    "https://*.netlify.app",
+]
 
 # Security headers
 SECURE_SSL_REDIRECT = not DEBUG

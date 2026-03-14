@@ -45,40 +45,49 @@ def test_check_api(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def test_email_api(request):
-    """Diagnostic endpoint to test SMTP settings"""
+    """Diagnostic endpoint to test SMTP settings and network connectivity"""
+    import socket
     target_email = request.query_params.get('email', settings.ADMIN_EMAIL)
-    subject = "XSTN - SMTP Diagnostic Test"
-    message = "If you are reading this, your Railway SMTP settings are working perfectly!"
     
+    results = {
+        'status': 'checking',
+        'config': {
+            'host': settings.EMAIL_HOST,
+            'port': settings.EMAIL_PORT,
+            'use_tls': getattr(settings, 'EMAIL_USE_TLS', False),
+            'use_ssl': getattr(settings, 'EMAIL_USE_SSL', False),
+            'backend': settings.EMAIL_BACKEND,
+        },
+        'network_check': {}
+    }
+    
+    # Try raw socket connections to common SMTP ports
+    for p in [587, 465, 25]:
+        try:
+            s = socket.create_connection(("smtp.gmail.com", p), timeout=5)
+            results['network_check'][f'port_{p}'] = "OPEN"
+            s.close()
+        except Exception as e:
+            results['network_check'][f'port_{p}'] = f"CLOSED: {str(e)}"
+            
+    # Try real email send
     try:
+        from django.core.mail import send_mail
         send_mail(
-            subject, 
-            message, 
+            "XSTN - SMTP Final Test", 
+            "Diagnostic message", 
             settings.DEFAULT_FROM_EMAIL, 
             [target_email], 
             fail_silently=False
         )
-        return Response({
-            'status': 'success',
-            'message': f'Test email sent to {target_email}',
-            'backend': settings.EMAIL_BACKEND,
-            'host': settings.EMAIL_HOST,
-            'port': settings.EMAIL_PORT,
-            'use_tls': getattr(settings, 'EMAIL_USE_TLS', False),
-            'use_ssl': getattr(settings, 'EMAIL_USE_SSL', False),
-            'from': settings.DEFAULT_FROM_EMAIL
-        })
+        results['status'] = 'success'
+        results['message'] = f'Test email sent to {target_email}'
     except Exception as e:
-        return Response({
-            'status': 'error',
-            'error_type': str(type(e).__name__),
-            'error_message': str(e),
-            'backend': settings.EMAIL_BACKEND,
-            'host': settings.EMAIL_HOST,
-            'port': settings.EMAIL_PORT,
-            'use_tls': getattr(settings, 'EMAIL_USE_TLS', False),
-            'use_ssl': getattr(settings, 'EMAIL_USE_SSL', False),
-        }, status=500)
+        results['status'] = 'error'
+        results['error_type'] = str(type(e).__name__)
+        results['error_message'] = str(e)
+        
+    return Response(results, status=200 if results['status'] == 'success' else 500)
 
 @csrf_exempt
 @api_view(['POST'])

@@ -36,10 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 fetch(apiUrl, {
                     method: "POST",
+                    mode: "cors",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(formData),
+                    credentials: "omit"
                 })
                     .then(response => {
                         console.log("Response status:", response.status);

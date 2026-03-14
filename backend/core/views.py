@@ -67,7 +67,7 @@ Best regards,
 XSTN Team
 www.xstn.com
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Join Community Submission - {instance.full_name}"
@@ -80,7 +80,7 @@ Message: {instance.message}
 
 Please log in to admin panel to review: http://127.0.0.1:8000/admin/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -120,7 +120,7 @@ Best regards,
 XSTN Team - Internship Program
 www.xstn.com
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Internship Application - {instance.full_name}"
@@ -134,7 +134,7 @@ Experience: {instance.experience}
 
 Please log in to admin panel to review: http://127.0.0.1:8000/admin/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -173,7 +173,7 @@ Best regards,
 XSTN Team - Customer Support
 www.xstn.com
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Contact Message - {instance.subject}"
@@ -186,7 +186,7 @@ Message: {instance.message}
 
 Please log in to admin panel to review: http://127.0.0.1:8000/admin/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -225,7 +225,7 @@ Best regards,
 XSTN Team - Business Development
 www.xstn.tech
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Project Proposal - {instance.project_type} from {instance.name}"
@@ -241,7 +241,7 @@ Message: {instance.message}
 
 Please log in to admin panel to review: http://localhost:8000/admin/core/proposalform/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -283,7 +283,7 @@ Best regards,
 XSTN Team - Recruitment
 www.xstn.tech
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Developer Application - {instance.role_interested} from {instance.full_name}"
@@ -302,7 +302,7 @@ Status: {instance.status.title()}
 
 Please log in to admin panel to review: http://localhost:8000/admin/core/developerapplication/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -340,7 +340,7 @@ Best regards,
 XSTN Team - Consultation Services
 www.xstn.tech
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Consultation Request - {instance.get_consultation_type_display()} from {instance.full_name}"
@@ -356,7 +356,7 @@ Status: {instance.status.title()}
 
 Please log in to admin panel to review: http://localhost:8000/admin/core/consultationrequest/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -393,7 +393,7 @@ Best regards,
 XSTN Team
 www.xstn.tech
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Newsletter Subscription - {instance.email}"
@@ -405,7 +405,7 @@ Subscription Date: {instance.created_at}
 
 This subscriber has been added to the mailing list.
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         
@@ -442,7 +442,7 @@ Best regards,
 XSTN Team
 www.xstn.tech
 """
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=False)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user_email], fail_silently=True)
             
             # Send admin notification
             admin_subject = f"New Testimonial from {instance.name}"
@@ -457,7 +457,7 @@ Status: Awaiting Approval
 
 Please log in to admin panel to approve: http://localhost:8000/admin/core/testimonial/
 """
-            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=False)
+            send_mail(admin_subject, admin_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL], fail_silently=True)
         except Exception as e:
             print(f"Error sending email: {str(e)}")
         

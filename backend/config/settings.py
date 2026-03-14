@@ -183,7 +183,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5500",
     "http://127.0.0.1:8080",
-    get_env('FRONTEND_URL', default='http://localhost:3000'),
+    "https://amazing-otter-fe4935.netlify.app",
+    "https://xstn.netlify.app",
+]
+
+# Allow all Netlify deploy previews
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.netlify\.app$",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

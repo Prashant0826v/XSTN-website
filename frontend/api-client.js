@@ -29,7 +29,7 @@ function getAPIBaseUrl() {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://127.0.0.1:8000';
     }
-    return 'https://xstn-backend.onrender.com';
+    return "https://xstn-website-production.up.railway.app";
 }
 
 /**

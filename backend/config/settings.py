@@ -259,7 +259,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # Security headers
-SECURE_SSL_REDIRECT = not DEBUG
+SECURE_SSL_REDIRECT = False  # Railway proxy handles SSL; disabling to rule out redirect issues with fetch/CORS
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_SECURITY_POLICY = {
     'default-src': ("'self'",),

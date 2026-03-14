@@ -18,6 +18,8 @@ router.register(r'newsletter-subscriptions', NewsletterSubscriptionViewSet, base
 router.register(r'testimonials', TestimonialViewSet, basename='testimonial')
 router.register(r'health', HealthCheckView, basename='health-check')
 
+from django.views.decorators.csrf import csrf_exempt
+
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', csrf_exempt(include(router.urls))),
 ]

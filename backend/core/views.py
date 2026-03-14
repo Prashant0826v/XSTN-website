@@ -62,6 +62,8 @@ def test_email_api(request):
             'status': 'success',
             'message': f'Test email sent to {target_email}',
             'backend': settings.EMAIL_BACKEND,
+            'host': settings.EMAIL_HOST,
+            'port': settings.EMAIL_PORT,
             'from': settings.DEFAULT_FROM_EMAIL
         })
     except Exception as e:
@@ -69,7 +71,9 @@ def test_email_api(request):
             'status': 'error',
             'error_type': str(type(e).__name__),
             'error_message': str(e),
-            'backend': settings.EMAIL_BACKEND
+            'backend': settings.EMAIL_BACKEND,
+            'host': settings.EMAIL_HOST,
+            'port': settings.EMAIL_PORT
         }, status=500)
 
 @csrf_exempt

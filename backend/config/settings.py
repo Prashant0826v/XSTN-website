@@ -176,10 +176,10 @@ SIMPLE_JWT = {
 }
 
 # CORS Configuration
-CORS_ALLOW_ALL_ORIGINS = True  # Temporarily allow all for debugging "Failed to fetch"
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True  # Broadest possible for debugging
+CORS_ALLOW_CREDENTIALS = False # Must be False if using wildcard origin in some browsers
 
-# Allow Netlify subdomains explicitly too
+# CSRF protection 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
     "https://xstn-website-production.up.railway.app",

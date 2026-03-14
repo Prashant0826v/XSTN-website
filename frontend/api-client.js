@@ -50,7 +50,7 @@ async function submitForm(endpoint, data) {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(data),
-            credentials: 'include' // Include cookies for CORS
+            credentials: 'omit' // No cookies needed for form submissions
         });
 
         const contentType = response.headers.get('content-type');

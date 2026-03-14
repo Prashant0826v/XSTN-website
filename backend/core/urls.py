@@ -11,6 +11,7 @@ router.register(r'contact', views.ContactMessageViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     # Form submission endpoints with email notifications
+    path('api/test-check/', views.test_check_api, name='test-check'),
     path('api/join/', views.join_community_api, name='join-api'),
     path('api/internship/', views.internship_application_api, name='internship-api'),
     path('api/contact/', views.contact_message_api, name='contact-api'),

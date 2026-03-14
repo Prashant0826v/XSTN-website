@@ -36,6 +36,13 @@ class ContactMessageViewSet(viewsets.ModelViewSet):
 
 
 @csrf_exempt
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def test_check_api(request):
+    """Simple API check"""
+    return Response({'status': 'ok', 'working': True})
+
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def join_community_api(request):

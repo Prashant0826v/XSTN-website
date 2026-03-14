@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             console.log("Submitting consultation:", formData);
 
-            fetch("http://127.0.0.1:8000/api/consultation/", {
+            const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+            const apiUrl = isLocal 
+                ? "http://127.0.0.1:8000/api/forms/consultation-requests/" 
+                : "https://xstn-website-production.up.railway.app/api/forms/consultation-requests/";
+
+            fetch(apiUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

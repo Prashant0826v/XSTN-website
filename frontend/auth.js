@@ -2,7 +2,9 @@
  * XSTN Authentication System
  * Handles signup, login, OTP verification, JWT token management, and auth state.
  */
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://127.0.0.1:8000'
+    : 'https://xstn-website-production.up.railway.app';
 
 // ==================== TOKEN MANAGEMENT ====================
 

@@ -224,11 +224,19 @@ SMTP_PASSWORD = get_env('SMTP_PASSWORD', default='')
 if SMTP_USER and SMTP_PASSWORD and SMTP_USER != 'your-email@gmail.com':
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = get_env('SMTP_SERVER', default='smtp.gmail.com')
-    EMAIL_PORT = int(get_env('SMTP_PORT', default='587'))
-    EMAIL_USE_TLS = True
+    EMAIL_PORT = int(get_env('SMTP_PORT', default='465'))
+    
+    # Use SSL for 465, TLS for 587
+    if EMAIL_PORT == 465:
+        EMAIL_USE_TLS = False
+        EMAIL_USE_SSL = True
+    else:
+        EMAIL_USE_TLS = True
+        EMAIL_USE_SSL = False
+        
     EMAIL_HOST_USER = SMTP_USER
     EMAIL_HOST_PASSWORD = SMTP_PASSWORD
-    EMAIL_TIMEOUT = 5  # Prevent hanging on Railway
+    EMAIL_TIMEOUT = 10  # Increased timeout for SSL handshake
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

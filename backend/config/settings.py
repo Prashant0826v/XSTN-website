@@ -27,8 +27,6 @@ DEBUG = get_env_bool('DEBUG', default=True)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'xstn-website-fvon.onrender.com',
-    '.onrender.com',
     '*',
 ]
 

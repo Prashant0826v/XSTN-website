@@ -27,7 +27,8 @@ DEBUG = get_env_bool('DEBUG', default=True)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.railway.app',  # Allow all Railway domains
+    '.railway.app',
+    '.onrender.com',  # Allow all Render domains
     '*',
 ]
 
@@ -200,6 +201,7 @@ CORS_ALLOW_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
+    "https://xstn-backend.onrender.com",
     "https://xstn-website-production.up.railway.app",
     "https://amazing-otter-fe4935.netlify.app",
     "https://69b4ea8fc0ed48db967a3a10--amazing-otter-fe4935.netlify.app",

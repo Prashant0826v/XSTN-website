@@ -16,7 +16,12 @@ document.getElementById("internshipForm").addEventListener("submit", function (e
         resume: null
     };
 
-    fetch("http://127.0.0.1:8000/api/forms/internship-applications/", {
+    const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+    const apiUrl = isLocal 
+        ? "http://127.0.0.1:8000/api/forms/internship-applications/" 
+        : "https://xstn-website-production.up.railway.app/api/forms/internship-applications/";
+
+    fetch(apiUrl, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

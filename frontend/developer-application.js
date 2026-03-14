@@ -29,7 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 console.log("Submitting developer application:", formData);
 
-                fetch("http://127.0.0.1:8000/api/forms/developer-applications/", {
+                const isLocal = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+                const apiUrl = isLocal 
+                    ? "http://127.0.0.1:8000/api/forms/developer-applications/" 
+                    : "https://xstn-website-production.up.railway.app/api/forms/developer-applications/";
+
+                fetch(apiUrl, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

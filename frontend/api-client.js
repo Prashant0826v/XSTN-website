@@ -29,9 +29,7 @@ function getAPIBaseUrl() {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://127.0.0.1:8000';
     }
-    // Automatically use your Railway backend URL
-    // REPLACE this with your actual Railway URL once deployed
-    return 'https://your-backend-name.railway.app';
+    return 'https://xstn-website-production.up.railway.app';
 }
 
 /**

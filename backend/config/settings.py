@@ -176,23 +176,16 @@ SIMPLE_JWT = {
 }
 
 # CORS Configuration
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:5500",
-    "http://localhost:8080",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:5500",
-    "http://127.0.0.1:8080",
-    "https://amazing-otter-fe4935.netlify.app",
-    "https://xstn.netlify.app",
-]
-
-# Allow all Netlify deploy previews
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://.*\.netlify\.app$",
-]
-
+CORS_ALLOW_ALL_ORIGINS = True  # Temporarily allow all for debugging "Failed to fetch"
 CORS_ALLOW_CREDENTIALS = True
+
+# Allow Netlify subdomains explicitly too
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+    "https://xstn-website-production.up.railway.app",
+    "https://amazing-otter-fe4935.netlify.app",
+    "https://*.netlify.app",
+]
 
 # Email Configuration
 # Using console backend for development - prints emails to server logs
